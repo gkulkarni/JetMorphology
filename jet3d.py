@@ -40,7 +40,7 @@ def binary_orbital_period(a_16):
     return t
 
 def half_opening_angle_intrinsic(a_16):
-    psi0 = 30.0*np.pi/180.0 # radians 
+    psi0 = 20.0*np.pi/180.0 # radians 
     psi = np.arcsin(np.sin(psi0)*a0/a_16)
     return psi#*180.0/np.pi # degrees 
 
@@ -76,6 +76,7 @@ def Omega(time):
 def vel(time):
     idx = np.abs(t-time).argmin()
     psi = psic[-idx]
+    print time, psi 
     # We are following geometry from Gower et al. Figure 1.
     vx = beta*c*(np.sin(psi)*np.sin(i)*np.cos(Omega(time-t0)) + np.cos(psi)*np.cos(i))
     vy = beta*c*np.sin(psi)*np.sin(Omega(time-t0))
@@ -84,6 +85,9 @@ def vel(time):
 
 # sign sets Forward or backward jet
 sign = 1
+
+for x in t:
+    v1, v2, v3 = vel(x) 
 
 velx, vely, velz = vel(t)
 
