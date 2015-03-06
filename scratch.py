@@ -110,3 +110,6 @@ ax.plot(t,psi_intrinsic,c='k',lw=1)
 ax.set_xlabel('kpc',labelpad=15)
 ax.set_ylabel('kpc',labelpad=15)
 
+    t1 = np.logspace(-2.0,3.8,num=100)
+    t2 = np.logspace(3.8,4.80619,num=100000)
+    t = np.concatenate((t1,t2))

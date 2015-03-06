@@ -56,6 +56,13 @@ def half_opening_angle_observed(psi):
 
 psi_observed = half_opening_angle_observed(psi)
 
+def binary_orbital_period(a_16):
+    t = 1.72*(a_16**1.5) # yr 
+    return t
+
+P = binary_orbital_period(a)
+
+
 debug = False
 if debug: 
     data = np.vstack((t,a_gas))
@@ -64,75 +71,100 @@ if debug:
         print t[i], a_gas[i]
         i += 1
 
-# Plot showing evolution of a.
+all = False
+if all: 
+        
+    # Plot showing evolution of a.
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    a *= 0.003241 
+    ax.plot(t,a,c='k',lw=2)
+    ax.set_xlim(1.0e1,1.0e5)
+    ax.set_xlabel('$t$ [yr]',labelpad=15) 
+    ax.set_ylabel('$a$ [pc]')
+    plt.savefig("a_gw.pdf",bbox_inches='tight')
+    #plt.show()
+
+    # Plot showing evolution of a_gas.
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.plot(t,a_gas)
+    ax.set_xlabel('$t$ [yr]') 
+    ax.set_ylabel('$a$ [10^{16} cm]')
+
+    # Plot showing evolution of v_orb.
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.plot(t,v,c='k',lw=2)
+    ax.set_xlim(1.0e1,1.0e5)
+    ax.set_xlabel('$t$ [yr]',labelpad=15) 
+    ax.set_ylabel('$v_\mathrm{orbital}$ [km$/$s]')
+    plt.savefig("v_orb.pdf",bbox_inches='tight')
+
+    # Plot showing evolution of the intrinsic half-opening angle of the
+    # conical jet
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.plot(t,psi,c='k',lw=2)
+    ax.set_xlim(1.0e1,1.0e5)
+    ax.set_xlabel('$t$ [yr]',labelpad=15) 
+    ax.set_ylabel(r'$\psi_\mathrm{intrinsic}$ [degrees]')
+    plt.savefig("psi.pdf",bbox_inches='tight')
+
+    # Plot showing evolution of the observed half-opening angle of the
+    # conical jet
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    #ax.set_yscale('log')
+    ax.plot(t,psi_observed)
+    ax.set_xlabel('$t$ [yr]') 
+    ax.set_ylabel(r'$\psi$')
+
+else:
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.plot(t[-100000:-1000],P[-100000:-1000])
+
+    mt = t[-100000:-1000]
+    maxmt = mt.max()
+    mt = maxmt - mt
+    mp = P[-100000:-1000]
+
+    i = 1
+    while i < 10:
+        print mt[i], mp[i], mp[-i]
+        i += 1
     
-fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(1, 1, 1)
-ax.tick_params('both', which='major', length=7, width=1)
-ax.tick_params('both', which='minor', length=3, width=1)
-ax.set_xscale('log')
-ax.set_yscale('log')
-a *= 0.003241 
-ax.plot(t,a,c='k',lw=2)
-ax.set_xlim(1.0e1,1.0e5)
-ax.set_xlabel('$t$ [yr]',labelpad=15) 
-ax.set_ylabel('$a$ [pc]')
-plt.savefig("a_gw.pdf",bbox_inches='tight')
-#plt.show()
-
-# Plot showing evolution of a_gas.
+    ax.plot(mt,P[-100000:-1000])
     
-fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(1, 1, 1)
-ax.tick_params('both', which='major', length=7, width=1)
-ax.tick_params('both', which='minor', length=3, width=1)
-ax.set_xscale('log')
-ax.set_yscale('log')
-ax.plot(t,a_gas)
-ax.set_xlabel('$t$ [yr]') 
-ax.set_ylabel('$a$ [10^{16} cm]')
-
-# Plot showing evolution of v_orb.
-
-fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(1, 1, 1)
-ax.tick_params('both', which='major', length=7, width=1)
-ax.tick_params('both', which='minor', length=3, width=1)
-ax.set_xscale('log')
-ax.set_yscale('log')
-ax.plot(t,v,c='k',lw=2)
-ax.set_xlim(1.0e1,1.0e5)
-ax.set_xlabel('$t$ [yr]',labelpad=15) 
-ax.set_ylabel('$v_\mathrm{orbital}$ [km$/$s]')
-plt.savefig("v_orb.pdf",bbox_inches='tight')
-
-# Plot showing evolution of the intrinsic half-opening angle of the
-# conical jet
-
-fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(1, 1, 1)
-ax.tick_params('both', which='major', length=7, width=1)
-ax.tick_params('both', which='minor', length=3, width=1)
-ax.set_xscale('log')
-ax.plot(t,psi,c='k',lw=2)
-ax.set_xlim(1.0e1,1.0e5)
-ax.set_xlabel('$t$ [yr]',labelpad=15) 
-ax.set_ylabel(r'$\psi_\mathrm{intrinsic}$ [degrees]')
-plt.savefig("psi.pdf",bbox_inches='tight')
-
-# Plot showing evolution of the observed half-opening angle of the
-# conical jet
-
-fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(1, 1, 1)
-ax.tick_params('both', which='major', length=7, width=1)
-ax.tick_params('both', which='minor', length=3, width=1)
-ax.set_xscale('log')
-#ax.set_yscale('log')
-ax.plot(t,psi_observed)
-ax.set_xlabel('$t$ [yr]') 
-ax.set_ylabel(r'$\psi$')
-
-
+    ax.set_xlabel('$t$ [yr]') 
 
 plt.show()
