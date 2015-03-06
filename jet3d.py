@@ -8,7 +8,7 @@ import numpy as np
 import math 
 import sys
 
-psi = 20.0 # degrees
+psi = 63.0 # degrees
 i = 40.0 # degrees
 theta = 0.0 # degrees
 beta = 0.90 # jet speed in units of c 
