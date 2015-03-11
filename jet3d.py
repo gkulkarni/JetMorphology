@@ -8,16 +8,16 @@ import numpy as np
 import math 
 import sys
 
-psi = 63.0 # degrees
+psi = 20.0 # degrees
 i = 40.0 # degrees
 theta = 0.0 # degrees
-beta = 0.90 # jet speed in units of c 
+beta = 0.20 # jet speed in units of c 
 d = 100.0 # Mpc; Distance between jet and observer
 
 d *= 1.0e3 # kpc
 
-output_filename = 'jet_i%2d_psi%2d' % (i, psi)
-save_pdf = False
+output_filename = 'jet_i%2d_psi%2d_beta_%3.2f' % (i, psi, beta)
+save_pdf = True
 
 psi *= np.pi/180.0 # radians 
 i *= np.pi/180.0 # radians 
