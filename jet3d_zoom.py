@@ -20,7 +20,7 @@ coeff = -2.56e5
 d *= 1.0e3 # kpc
 
 output_filename = 'jet_i%2d_psi%2d' % (i, psi)
-save_pdf = False
+save_pdf = True
 
 psi *= np.pi/180.0 # radians 
 i *= np.pi/180.0 # radians 
@@ -44,34 +44,12 @@ def half_opening_angle_intrinsic(a_16):
     angle = np.arcsin(np.sin(psi0)*a0/a_16)
     return angle #*180.0/np.pi # degrees 
 
-case = 1
+def t_binary(time):
+    return np.abs(time-64001.477505390176) # yr
 
-if case == 0:
-    # Simple sampling
-    t = np.logspace(-1.0,2.0,10**4) # yr
-    t0 = t[0]
-    print t.size
-
-elif case == 1:
-    # Sampling increases at small separations
-    t1 = np.logspace(-2.0,3.8,num=100)
-    t2 = np.logspace(3.8,4.80619,num=100000)
-    tb = np.concatenate((t1,t2))
-    t0 = tb[0]
-    a = binary_separation_gw(tb)
-    pb = binary_orbital_period(a)
-    psi_chirp = half_opening_angle_intrinsic(a)
-
-    t = tb[-100000:-5]
-    maxt = t.max()
-    t = maxt - t
-    p = pb[-100000:-5]
-    psic = psi_chirp[-100000:-5]
-    
 def Omega(time):
     # Angular velocity times time for jet precession 
-    idx = np.abs(t-time).argmin()
-    period = p[idx]
+    period = binary_orbital_period(binary_separation_gw(t_binary(time))) # yr 
     return 2.0*np.pi*time/period # radians
 
 def vel(time):
@@ -81,33 +59,59 @@ def vel(time):
     vz = beta*c*(np.cos(psi)*np.sin(i)-np.sin(psi)*np.cos(i)*np.cos(Omega(time)))
     return sign*vx, sign*vy, sign*vz # km/s
 
-# sign sets Forward or backward jet
+fig = plt.figure(figsize=(7, 7), dpi=100)
+ax = fig.add_subplot(1, 1, 1)
+ax.set_xlim(-0.04,0.14)
+ax.set_ylim(-0.08,0.08)
+
+t = np.linspace(10.0,11.0,10000)
+t0 = t[0]
 sign = 1
-
 velx, vely, velz = vel(t)
-
 y = vely*t*yrbys/kpcbykm # kpc
 z = velz*t*yrbys/kpcbykm # kpc
-
 y_obs = y/(1.0-velx/c)
 z_obs = z/(1.0-velx/c)
-
 phi_y_obs = y_obs/d * 180.0/np.pi * 3600.0 # arcsec
 phi_z_obs = z_obs/d * 180.0/np.pi * 3600.0 # arcsec
+ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1,rasterized=True)
+sign = -1
+velx, vely, velz = vel(t)
+y = vely*t*yrbys/kpcbykm # kpc
+z = velz*t*yrbys/kpcbykm # kpc
+y_obs = y/(1.0-velx/c)
+z_obs = z/(1.0-velx/c)
+phi_y_obs = y_obs/d * 180.0/np.pi * 3600.0 # arcsec
+phi_z_obs = z_obs/d * 180.0/np.pi * 3600.0 # arcsec
+ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1,rasterized=True)
 
-fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(2, 1, 1)
-ax.plot(t,phi_z_obs,c='k',lw=1)
-#ax.set_xlabel('time [yr]',labelpad=15)
+t = np.linspace(1.0,2.0,10000)
+t0 = t[0]
+sign = 1
+velx, vely, velz = vel(t)
+y = vely*t*yrbys/kpcbykm # kpc
+z = velz*t*yrbys/kpcbykm # kpc
+y_obs = y/(1.0-velx/c)
+z_obs = z/(1.0-velx/c)
+phi_y_obs = y_obs/d * 180.0/np.pi * 3600.0 # arcsec
+phi_z_obs = z_obs/d * 180.0/np.pi * 3600.0 # arcsec
+ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1,rasterized=True)
+sign = -1
+velx, vely, velz = vel(t)
+y = vely*t*yrbys/kpcbykm # kpc
+z = velz*t*yrbys/kpcbykm # kpc
+y_obs = y/(1.0-velx/c)
+z_obs = z/(1.0-velx/c)
+phi_y_obs = y_obs/d * 180.0/np.pi * 3600.0 # arcsec
+phi_z_obs = z_obs/d * 180.0/np.pi * 3600.0 # arcsec
+ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1,rasterized=True)
+
+
+ax.set_xlabel('arcsec',labelpad=15)
 ax.set_ylabel('arcsec',labelpad=15)
 
-ax = fig.add_subplot(2, 1, 2)
-ax.plot(t,velx,c='k',lw=1)
-ax.set_xlabel('time [yr]',labelpad=15)
-ax.set_ylabel('$v_x$ [km$/$s]',labelpad=15)
-
 if save_pdf: 
-    plt.savefig(output_filename+'_ang.pdf',bbox_inches='tight')
+    plt.savefig(output_filename+'_zoompatch.pdf',bbox_inches='tight')
 
 plt.show()
 

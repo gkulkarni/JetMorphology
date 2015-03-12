@@ -44,10 +44,10 @@ def orbital_speed(a_16):
 v = orbital_speed(a) 
 
 def half_opening_angle_intrinsic(a_16):
-    psi0 = 2.0*np.pi/180.0 # radians 
     psi = np.arcsin(np.sin(psi0)*a0/a_16)
     return psi*180.0/np.pi
 
+psi0 = 2.0*np.pi/180.0 # radians 
 psi = half_opening_angle_intrinsic(a)
 
 def half_opening_angle_observed(psi):
@@ -71,7 +71,7 @@ if debug:
         print t[i], a_gas[i]
         i += 1
 
-case = 2
+case = 3
 if case == 0: 
         
     # Plot showing evolution of a.
@@ -177,5 +177,22 @@ elif case == 2:
     ax.plot(t,P,c='k',lw=1)
     ax.set_xlabel('$t$ [yr]')
     ax.set_ylabel('period [yr]') 
+
+elif case == 3:
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    #ax.set_yscale('log')
+    ax.plot(t,psi,c='k',lw=1)
+
+    psi0 = 20.0*np.pi/180.0 # radians 
+    psi = half_opening_angle_intrinsic(a)
+    ax.plot(t,psi,c='r',lw=1)
+    
+    ax.set_xlabel('$t$ [yr]')
+    ax.set_ylabel('half-opening angle [degrees]') 
     
 plt.show()
