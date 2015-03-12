@@ -2,7 +2,7 @@ import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
 mpl.rcParams['font.serif'] = 'cm'
-mpl.rcParams['font.size'] = '22'
+mpl.rcParams['font.size'] = '11'
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -71,8 +71,8 @@ if debug:
         print t[i], a_gas[i]
         i += 1
 
-all = False
-if all: 
+case = 2
+if case == 0: 
         
     # Plot showing evolution of a.
 
@@ -143,7 +143,7 @@ if all:
     ax.set_xlabel('$t$ [yr]') 
     ax.set_ylabel(r'$\psi$')
 
-else:
+elif case == 1:
 
     fig = plt.figure(figsize=(7, 7), dpi=100)
     ax = fig.add_subplot(1, 1, 1)
@@ -164,7 +164,18 @@ else:
         i += 1
     
     ax.plot(mt,P[-100000:-1000])
-    
     ax.set_xlabel('$t$ [yr]') 
 
+elif case == 2: 
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.plot(t,P,c='k',lw=1)
+    ax.set_xlabel('$t$ [yr]')
+    ax.set_ylabel('period [yr]') 
+    
 plt.show()

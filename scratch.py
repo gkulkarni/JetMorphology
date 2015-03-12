@@ -113,3 +113,23 @@ ax.set_ylabel('kpc',labelpad=15)
     t1 = np.logspace(-2.0,3.8,num=100)
     t2 = np.logspace(3.8,4.80619,num=100000)
     t = np.concatenate((t1,t2))
+
+    sign = -1
+
+velx, vely, velz = vel(t)
+
+yb = vely*t*yrbys/kpcbykm # kpc
+zb = velz*t*yrbys/kpcbykm # kpc
+
+y_obsb = yb/(1.0-velx/c)
+z_obsb = zb/(1.0-velx/c)
+
+phi_y_obsb = y_obsb/d * 180.0/np.pi * 3600.0 # arcsec
+phi_z_obsb = z_obsb/d * 180.0/np.pi * 3600.0 # arcsec 
+
+ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1)
+ax.plot(phi_z_obsb,phi_y_obsb,c='k',lw=1)
+ax.set_xlabel('arcsec',labelpad=15)
+ax.set_ylabel('arcsec',labelpad=15)
+ax.set_xlim(40.60,40.6+1.0e-20)
+# ax.set_ylim(-1.0,1.0)

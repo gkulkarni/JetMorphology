@@ -41,8 +41,8 @@ def binary_orbital_period(a_16):
 
 def half_opening_angle_intrinsic(a_16):
     psi0 = 20.0*np.pi/180.0 # radians 
-    psi = np.arcsin(np.sin(psi0)*a0/a_16)
-    return psi#*180.0/np.pi # degrees 
+    angle = np.arcsin(np.sin(psi0)*a0/a_16)
+    return angle #*180.0/np.pi # degrees 
 
 case = 1
 
@@ -62,38 +62,49 @@ elif case == 1:
     pb = binary_orbital_period(a)
     psi_chirp = half_opening_angle_intrinsic(a)
 
-    t = tb[-100000:-1000]
+    t = tb[-100000:-5]
     maxt = t.max()
     t = maxt - t
-    p = pb[-100000:-1000]
-    psic = psi_chirp[-100000:-1000]
+    p = pb[-100000:-5]
+    psic = psi_chirp[-100000:-5]
     
+def Omega(time):
+    # Angular velocity times time for jet precession 
+    idx = np.abs(t-time).argmin()
+    period = p[idx]
+    return 2.0*np.pi*time/period # radians
+
+def vel(time):
+    # We are following geometry from Gower et al. Figure 1.
+    vx = beta*c*(np.sin(psi)*np.sin(i)*np.cos(Omega(time)) + np.cos(psi)*np.cos(i))
+    vy = beta*c*np.sin(psi)*np.sin(Omega(time))
+    vz = beta*c*(np.cos(psi)*np.sin(i)-np.sin(psi)*np.cos(i)*np.cos(Omega(time)))
+    return sign*vx, sign*vy, sign*vz # km/s
+
+# sign sets Forward or backward jet
+sign = 1
+
+velx, vely, velz = vel(t)
+
+y = vely*t*yrbys/kpcbykm # kpc
+z = velz*t*yrbys/kpcbykm # kpc
+
+y_obs = y/(1.0-velx/c)
+z_obs = z/(1.0-velx/c)
+
+phi_y_obs = y_obs/d * 180.0/np.pi * 3600.0 # arcsec
+phi_z_obs = z_obs/d * 180.0/np.pi * 3600.0 # arcsec
+
 fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(1, 1, 1)
-#ax.set_xscale('log')
-ax.set_yscale('log')
+ax = fig.add_subplot(2, 1, 1)
+ax.plot(t,phi_z_obs,c='k',lw=1)
+#ax.set_xlabel('time [yr]',labelpad=15)
+ax.set_ylabel('arcsec',labelpad=15)
+
+ax = fig.add_subplot(2, 1, 2)
 ax.plot(t,p,c='k',lw=1)
-
-t = tb[-100000:-100]
-maxt = t.max()
-t = maxt - t
-p = pb[-100000:-100]
-ax.plot(t,p,c='r',lw=1)
-
-t = tb[-100000:-10]
-maxt = t.max()
-t = maxt - t
-p = pb[-100000:-10]
-ax.plot(t,p,c='r',lw=1,dashes=[7,2])
-
-t = tb[-100000:-5]
-maxt = t.max()
-t = maxt - t
-p = pb[-100000:-5]
-ax.plot(t,p,c='r',lw=1,dashes=[7,2,2,2])
-
-ax.set_xlabel('time [yr]')
-ax.set_ylabel('period [yr]')
+ax.set_xlabel('time [yr]',labelpad=15)
+ax.set_ylabel('period [yr]',labelpad=15)
 
 if save_pdf: 
     plt.savefig(output_filename+'_ang.pdf',bbox_inches='tight')

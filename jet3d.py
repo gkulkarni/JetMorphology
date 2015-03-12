@@ -8,7 +8,7 @@ import numpy as np
 import math 
 import sys
 
-#psi = 20.0 # degrees
+psi = 20.0 # degrees
 i = 40.0 # degrees
 theta = 0.0 # degrees
 beta = 0.90 # jet speed in units of c 
@@ -22,7 +22,7 @@ d *= 1.0e3 # kpc
 #output_filename = 'jet_i%2d_psi%2d' % (i, psi)
 save_pdf = False
 
-#psi *= np.pi/180.0 # radians 
+psi *= np.pi/180.0 # radians 
 i *= np.pi/180.0 # radians 
 theta *= np.pi/180.0 # radians
 
@@ -75,7 +75,7 @@ def Omega(time):
 
 def vel(time):
     idx = np.abs(t-time).argmin()
-    psi = psic[-idx]
+    #psi = psic[-idx]
     print time, psi 
     # We are following geometry from Gower et al. Figure 1.
     vx = beta*c*(np.sin(psi)*np.sin(i)*np.cos(Omega(time-t0)) + np.cos(psi)*np.cos(i))
