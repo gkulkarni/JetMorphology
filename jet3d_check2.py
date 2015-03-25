@@ -14,10 +14,11 @@ theta = 0.0 # degrees
 beta = 0.90 # jet speed in units of c 
 d = 100.0 # Mpc; Distance between jet and observer
 
-a0 = 0.003241 # pc
+M = 1.0e8 # Msun; total mass of the equal-mass binary 
+a0 = 3.241e-3*(M*1.0e-8)**(3./4.) # pc 
 pcto_10to16cm = 0.003241
 a0 /= pcto_10to16cm # 1.0e16 cm
-coeff = -2.56e5
+coeff = -2.56e5/(M*1.0e-8)**3 
 
 d *= 1.0e3 # kpc
 
@@ -39,7 +40,7 @@ def binary_separation_gw(t):
     return a
 
 def binary_orbital_period(a_16):
-    t = 1.72*(a_16**1.5) # yr 
+    t = 1.72*(a_16**1.5)/np.sqrt(M*1.0e-8) # yr 
     return t
 
 def half_opening_angle_intrinsic(a_16):
