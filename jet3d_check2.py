@@ -14,7 +14,9 @@ theta = 0.0 # degrees
 beta = 0.90 # jet speed in units of c 
 d = 100.0 # Mpc; Distance between jet and observer
 
-a0 = 1 # 1.0e16 cm
+a0 = 0.003241 # pc
+pcto_10to16cm = 0.003241
+a0 /= pcto_10to16cm # 1.0e16 cm
 coeff = -2.56e5
 
 d *= 1.0e3 # kpc
@@ -102,6 +104,7 @@ phi_z_obsb = z_obsb/d * 180.0/np.pi * 3600.0 # arcsec
 
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
+#ax.set_ylim(-0.01,0.01)
 ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1,rasterized=True)
 ax.plot(phi_z_obsb,phi_y_obsb,c='k',lw=1,rasterized=True)
 ax.set_xlabel('arcsec',labelpad=15)
