@@ -10,12 +10,13 @@ import sys
 
 #psi = 20.0 # degrees
 i = 40.0 # degrees
-theta = 0.0 # degrees
 beta = 0.90 # jet speed in units of c 
 d = 100.0 # Mpc; Distance between jet and observer
 
-M = 1.0e8 # Msun; total mass of the equal-mass binary 
-a0 = 3.241e-3*(M*1.0e-8)**(3./4.) # pc 
+M = 1.0e10 # Msun; total mass of the equal-mass binary
+Mdot = 0.1 # Eddington units
+#a0 = 3.241e-3*(M*1.0e-8)**(3./4.) # pc
+a0 = 8.3e-3*(M*1.0e-8)**(3./4.)*(Mdot**(-0.25)) # pc 
 pcto_10to16cm = 0.003241
 a0 /= pcto_10to16cm # 1.0e16 cm
 coeff = -2.56e5/(M*1.0e-8)**3 
@@ -23,12 +24,11 @@ coeff = -2.56e5/(M*1.0e-8)**3
 d *= 1.0e3 # kpc
 
 #output_filename = 'jet_i%2d_psi%2d_beta%3.2f' % (i, psi, beta)
-output_filename = 'jet_i%2d_beta%3.2f' % (i, beta)
+output_filename = 'jet_i%2d_beta%3.2f_mdot%3.2f' % (i, beta, Mdot)
 save_pdf = True
 
 #psi *= np.pi/180.0 # radians 
 i *= np.pi/180.0 # radians 
-theta *= np.pi/180.0 # radians
 
 c = 3.0e5 # km/s; speed of light
 yrbys = 3.154e7
@@ -53,7 +53,9 @@ if case == 0:
     t = np.logspace(-2.0,2.0,10000000)
     output_filename += '_full'
 elif case == 1:
-    t = np.linspace(10.0,11.0,10000)
+    #t = np.linspace(10.0,14.0,10000)
+    t = np.logspace(-2.0,2.0,10000000)
+    t = t[6000000:9500000]
     output_filename += '_zoom1'
 elif case == 2:
     t = np.linspace(1.0,2.0,10000)
@@ -62,7 +64,9 @@ elif case == 2:
 t0 = t[0]
 
 def t_binary(time):
-    return np.abs(time-64001.477505390176) # yr
+    t_merge=abs(coeff)*a0**4/4.0
+    return np.abs(time-t_merge) # yr
+    #return np.abs(time-64001.477505390176) # yr
 
 def Omega(time):
     # Angular velocity times time for jet precession 
@@ -106,14 +110,20 @@ phi_z_obsb = z_obsb/d * 180.0/np.pi * 3600.0 # arcsec
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
 #ax.set_ylim(-0.01,0.01)
+if case==1:
+    ax.set_ylim(-0.1,0.1)
+    #ax.set_xlim(-0.01,0.01)
 ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1,rasterized=True)
-ax.plot(phi_z_obsb,phi_y_obsb,c='k',lw=1,rasterized=True)
+if case!=1: 
+    ax.plot(phi_z_obsb,phi_y_obsb,c='k',lw=1,rasterized=True)
 ax.set_xlabel('arcsec',labelpad=15)
 ax.set_ylabel('arcsec',labelpad=15)
 
-if case==0:
+if case==7:
 
-    t = np.linspace(10.0,11.0,10000)
+    #t = np.linspace(10.0,11.0,10000)
+    # t = np.logspace(0.0,2.0,10000)
+    t = t[6000000:9500000]
     t0 = t[0]
     sign = 1
     velx, vely, velz = vel(t)

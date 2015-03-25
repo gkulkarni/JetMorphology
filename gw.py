@@ -6,17 +6,26 @@ mpl.rcParams['font.size'] = '11'
 import matplotlib.pyplot as plt
 import numpy as np
 
-M = 1.0 # 1.0e8 Msun
-coeff = -2.56e5 
+M = 1.0e8 # Msun; total mass of the equal-mass binary 
+
+pcto_10to16cm = 0.003241
+Mdot = 10.0 # Eddington units
+a0 = 8.3e-3*(M*1.0e-8)**(3./4.)*(Mdot**(-0.25)) # pc 
+a0 /= pcto_10to16cm # 1.0e16 cm
+coeff = -2.56e5/(M*1.0e-8)**3 
 
 t0 = 1.0e-2 # yr
-a0 = 1 # 1.0e16 cm
 
 def binary_separation_gw(t):
     a = (4.0/coeff) * (t - t0 + coeff*a0**4/4.0)
     a = a**(1./4.)
     return a 
-    
+
+t_merge=coeff*a0**4/4.0
+print 'coeff=', coeff
+print 't_merge=', t_merge
+print 'log(t_merge)=', np.log10(-t_merge)
+
 # t1 = np.logspace(-2.0,4.80617,num=100)
 # a1 = binary_separation_gw(t1) 
 
@@ -26,7 +35,8 @@ def binary_separation_gw(t):
 t1 = np.logspace(-2.0,3.8,num=100)
 a1 = binary_separation_gw(t1) 
 
-t2 = np.logspace(3.8,4.80619,num=100000)
+tf = np.log10(-t_merge)
+t2 = np.logspace(3.8,tf,num=100000)
 a2 = binary_separation_gw(t2) 
 
 t = np.concatenate((t1,t2))
@@ -57,7 +67,7 @@ def half_opening_angle_observed(psi):
 psi_observed = half_opening_angle_observed(psi)
 
 def binary_orbital_period(a_16):
-    t = 1.72*(a_16**1.5) # yr 
+    t = 1.72*(a_16**1.5)/np.sqrt(M*1.0e-8) # yr 
     return t
 
 P = binary_orbital_period(a)
@@ -71,7 +81,7 @@ if debug:
         print t[i], a_gas[i]
         i += 1
 
-case = 3
+case = 4
 if case == 0: 
         
     # Plot showing evolution of a.
@@ -194,5 +204,19 @@ elif case == 3:
     
     ax.set_xlabel('$t$ [yr]')
     ax.set_ylabel('half-opening angle [degrees]') 
-    
+
+elif case == 4:
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    ax = fig.add_subplot(1, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    a *= 0.003241 
+    ax.plot(t,a,c='k',lw=2)
+    #ax.set_xlim(1.0e1,1.0e7)
+    ax.set_xlabel('$t$ [yr]',labelpad=15) 
+    ax.set_ylabel('$a$ [pc]')
+
 plt.show()
