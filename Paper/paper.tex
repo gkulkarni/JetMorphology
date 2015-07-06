@@ -1,7 +1,3 @@
-% File: paper.tex 
-%  Cre: 2013-09-12 
-%  $Id: paper.tex 4261 2015-01-27 23:49:04Z jhennawi $ 
-
 \documentclass[iop]{emulateapj}
 \bibliographystyle{apj}
 \usepackage{amsmath} 
@@ -16,131 +12,255 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,decorations.pathmorphing}
 
-\shorttitle{Pressure smoothing in nonlinear IGM}
+\shorttitle{Chirping Jets from Black Hole Binaries}
 \shortauthors{Kulkarni et al.}
 
 \begin{document}
 
-\title{Flagging gravitational wave sources from radio jet morphology}
-\author{Girish Kulkarni\altaffilmark{1} and
-  Abraham Loeb\altaffilmark{2}}
-\altaffiltext{1}{Institute of Astronomy, University of Cambridge,
-  Madingley Road, Cambridge CB3 0HA, UK;
-  \email{kulkarni@ast.cam.ac.uk}}
-\altaffiltext{2}{Harvard}
+\title{Radio Crickets: Chirping Jets from Black Hole Binaries Entering
+  their Gravitational Wave Inspiral} \author{Girish
+  Kulkarni\altaffilmark{1} and Abraham Loeb\altaffilmark{2}}
+\altaffiltext{1}{Institute of Astronomy and Kavli Institute of
+  Cosmology, University of Cambridge, Madingley Road, Cambridge CB3
+  0HA, UK; \email{kulkarni@ast.cam.ac.uk}} \altaffiltext{2}{Institute
+  for Theory \& Computation, Harvard University, 60 Garden Street,
+  Cambridge, MA 02138, USA; \email{aloeb@cfa.harvard.edu}}
 
 \begin{abstract}
-Apart from a stochastic gravitational wave (GW) background, LISA will
-also be able to detect GW emission from binary black holes. The number
-of such binary sources depends on the major merger rates of gas-rich
-galaxies and subsequent evolution of their central black holes.  The
-latter of these is uncertain.  Therefore, an alternate method of
-flagging GW sources is useful.  Here we show that if one of the binary
-BHs is accreting and has a jet, then the dynamical evolution of the
-binary is imprinted on the jet morphology.  Using this dependance, it
-is possible to flag binary BHs that are entering their GW inspiral
-phase in the present epoch.  We further show that this relationship
-between the binary dynamics and the jet morphology has two other
-applications: (1) at large binary separations the Mpc-scale jet
-morphology can probe the acts as a probe of the pc-scale gas supply to
-the binary, and (2) at smaller separations the jet morphology acts as
-a test of GR.
+Apart from a stochastic gravitational wave (GW) background, eLISA will
+also be able to detect GW emission from binary black holes.  Combined
+GW and electromagnetic observations of compact binary mergers should
+enable detailed studies of astrophysical processes in the strong-field
+gravity regime.  Here we show that if one of component BHs of the
+binary has an accretion disk with an associated jet, the morphology of
+the jet can act as an electromagnetic counterpart to the GW signal
+from the binary.  For binaries with mass $10^7$--$10^{10}$ M$_\odot$
+at redshifts $z<0.5$, the jet precesses along a biconical surface due
+to the binary's orbital motion.  When the binary enters the GW phase
+of its evolution, the opening angle widens, the jet exhibits
+milliarcsecond scale wiggles and the conical surface of jet precession
+is twisted due to the superluminal motion.  These morphological
+features can be used to constrain the dyanamical parameters of the
+binary.  Monitoring of jets with these features in current and
+archival data will put a lower limit on the sources that could be
+detected by GW experiments such as eLISA and Pulsar Timing Arrays
+(PTAs).  In the future, microarcsecond interferometry with experiments
+such as SKA will increase the potential usefulness of this technique.  
 \end{abstract}
 
-\keywords{cosmology: IGM} 
+\keywords{BHs}
 
 \section{Introduction}
 \label{sec:intro}
 
-Consider two black holes with masses $M_1$ and $M_2$ in a circular
-orbit of radius $a$ around each other \citep{2010PhRvD..81d7503L}.
-Let $M_1=M_2$ (assume equal masses for simplicity).  The orbital speed
-of each black hole is given by
+Binaries of supermassive black holes (BHs) arise naturally as a result
+of mergers of galaxies in the context of the heirarchical galaxy
+formation \citep{2000MNRAS.311..576K, 2002MNRAS.336L..61H,
+  2008ApJ...676...33D, 2012MNRAS.422.1306K}.  After a galaxy merger,
+infalling black holes lose their angular momentum in three stages
+before coalescence \citep{1980Natur.287..307B, 2005LRR.....8....8M,
+  2011ASL.....4..181C}.  In the first stage, the black holes sink to
+the center of the gravitational potential of the merger remnant due to
+dynamical friction and form a gravitationally bound binary.  The newly
+formed binary then continues to lose its angular momentum and shrink
+by scattering ambient gas and stars.  In the final stage of the
+binary's evolution, emission of gravitational waves (GWs) becomes the
+predominant mode angular momentum loss, which results in the
+coalescence of the black holes.
+
+% Any more references to add here?
+General relativisitic (GR) numerical simulations can predict the
+binary's evolution in its final stage up to coalescence
+\citep{2005PhRvL..95l1101P, 2006PhRvL..96k1102B, 2006PhRvL..96k1101C}.
+This has stimulated interest in predicting related electromagnetic
+signals of black hole coalescence.  Effects considered in the
+literature include afterglows due to infall of gas on the remnant
+black hole \citep{2005ApJ...622L..93M}, electromagnetic variability in
+the circumbinary disk due to shocks induced by the sudden mass loss of
+the binary due to GW emission at coalescence
+\citep{2007APS..APR.S1010B}, flares from shocked remnants of accretion
+disks around recoiled remnant black hole \citep{2007PhRvL..99d1103L,
+  2008ApJ...682..758S, 2009CQGra..26i4032H}, quasi-periodic
+variability in gas accretion in the early stages of black hole merger
+\citep{2008ApJ...672...83M, 2009CQGra..26i4032H, 2012MNRAS.427.2680K},
+evolution in the profiles of broad emission lines shortly before
+merger \citep{2013MNRAS.432.1468M}, characteristic evolution in
+thermal emission due to circumbinary accretion
+\citep{2015MNRAS.446L..36F}, brightening of accretion disk due to
+viscous dissipation of gravitational waves
+\citep{2008PhRvL.101d1101K}, and prompt tidal disruption of stars by
+the recoiled remnant \citep{2011MNRAS.412...75S}.
+
+% Replace `LISA' with `eLISA` or `NGO'?  Mention pulsar timing arrays?
+In addition to testing GR in the strong field limit, observations of
+electromagnetic counterparts will help localize sources of GWs for
+future detectors such as the Evolved Laser Interferometer Space
+Antenna (eLISA)\footnote{\url{https://www.elisascience.org}}, which would be
+capable of observing the peak GW luminosity for BH coalescence of
+$\sim 10^{57}$ erg$/$s up to large cosmological distances
+\citep{2003CQGra..20S..65H, 2013CQGra..30x4009S}.  Simultaneous
+detection of GW and electromagnetic signals from coalescing binaries
+will yield rich scientific pay-offs \citep{2003CQGra..20S..65H,
+  2005ApJ...629...15H}.  For example, by a redshift measurement of
+eLISA sources could constraint cosmological parameters.  Measurement
+of the black hole masses and spins from the GW signal will constrain
+accretion physics during coalescence.  But even before eLISA is
+launched, a search of electromagnetic signatures may point to the
+expected abundance of GW sources.
+
+In this Letter we study the morphology of a jet emitted by one of the
+binary members during its final stage of evolution before coalescence,
+i.e., when the binary's dynamics is dominated by GW emission.  We show
+that the helical chirping morphology of the jet can be used to infer
+the binary parameters.
+
+\section{Binary parameters}
+
+We study a BH binary formed following a gas-rich merger of two
+galaxies as a result of the processes described above.  We consider
+black holes with masses $M_1$ and $M_2$ in a circular orbit of radius
+$a$ around each other.  Let $M=M_1+M_2$.  For simplicity, we consider
+an equal-mass binary ($M_1=M_2$) on a circular orbit. We will consider
+unequal black holes masses and elliptical orbits below.  The orbital
+speed of each black hole is given by \citep{2010PhRvD..81d7503L}
 \begin{equation}
-  v_\mathrm{orb} = \frac{1}{2}\left(\frac{GM}{a}\right)^{1/2} = 5.8\times 10^3\, \mathrm{km~s}^{-1}M_8^{1/2}a_{16}^{-1/2},
+  v = \frac{1}{2}\left(\frac{GM}{a}\right)^{1/2}\!\!\!\! = 5.8\times 10^3\, \mathrm{km~s}^{-1}M_8^{1/2}a_{16}^{-1/2},
   \label{eqn:vorb}
 \end{equation}
-where $a_{16}\equiv a/10^{16}$ cm and $M_8\equiv M/10^8$
-M$_\odot$. Now imagine a jet coming out of one of the BHs at an angle
-$\chi$ to the direction of the orbital angular momentum.  Then because
-of the orbital motion, the jet will sweep out a cone.  This is shown
-in Figure \ref{fig:BH_orbit}.  The half opening angle of the cone is
-given by
+where $a_{16}\equiv (a/10^{16}$ cm$)$ and $M_8\equiv (M/10^8$
+M$_\odot)$ are the binary separation and mass,
+respectively.\footnote{Note that $10^{16} \mathrm{cm}\approx 3.4\times
+  10^{-3} \mathrm{pc}$.  The Schwarzchild radius of a $10^8$~M$_\odot$
+  black hole is $9.6\times 10^{-6}$~pc, or $\sim 3\times 10^{13}$~cm.}
+The orbital period is
 \begin{equation}
-  \sin\psi = \frac{v_\mathrm{orb}\cos\chi}{v_\mathrm{jet}},
+  P = 2\pi\left(\frac{GM}{a^3}\right)^{-1/2}\!\!\!\! = 1.72\, \mathrm{yr}\, a_{16}^{3/2} M_8^{-1/2}.
 \end{equation}
-where $v_\mathrm{jet}$ is the ballistic speed of the jet.  Figure
-\ref{fig:jet} shows how this looks.
-
-For observable predictions we have to project this in observer plane.
-Let the angle between the jet direction and the observer line of sight
-be $i$.  Then
-\begin{equation}
-  \psi^\mathrm{obs}\approx\frac{\psi}{\sin i}.
-\end{equation}
-
-\section{Jet structure when binary enters GW-induced inspiral}
-
-Now when the binary is at the separation at which gravitational
-wave-induced inspiral begins, it has a velocity given by Equation (5)
-of your 2009 paper:
-\begin{equation}
-  v_\mathrm{orb} = 3.6\times 10^3\, \mathrm{km~s}^{-1}(\dot{\mathcal{M}}M_8)^{1/8},
-  \label{eqn:v}
-\end{equation}
-where all symbols on the right hand side have the same meaning as in
-your paper.  The separation between the two black at this instant is
-given by Equation (7) of your paper:
-\begin{equation}
-  a = 8.3\times 10^{-3}\, \mathrm{pc}\, M_8^{3/4}\dot{\mathcal{M}}^{-1/4}.
-\end{equation}
-This gives
-\begin{equation}
-  \psi^\mathrm{obs}=2.42^\circ \left(\frac{v_\mathrm{jet}}{0.95 c}\right)^{-1}\cos\left(\frac{\chi}{30^{\circ}}\right)\left[\sin\left(\frac{i}{15^{\circ}}\right)\right]^{-1},
-\end{equation}
-This value in itself is probably not very interesting as it depends on
-$v_\mathrm{jet}$ and $\chi$, but it gets interesting when we consider
-the evolution of $\psi^\mathrm{obs}$ below.
+% Mention typical size of accretion disks and typical ISCO radius
+% above?
 
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
       \draw (0,0) ellipse (3 and 0.5);
       \fill[black] (0,0) circle (1pt);
-      %\draw [->,densely dashed] (0,0) -- (0,2.0);
-      \fill[black] (2,-0.39) circle (3pt);
-      \fill[black] (-2,0.39) circle (3pt);
-      \draw [->] (2,-0.39) -- (3.5,-0.1);
-      \draw [->,densely dashed] (2,-0.39) -- (2,1.0);
-      \draw [->] (2,-0.39) -- (2.5,0.8);
-      \draw [->,red] (2,-0.39) -- (3.5,0.8);
-      \draw (4.1,-0.1) node {${\mathbf{v}}_\mathrm{orbital}$};
-      \draw (2.7,1.0) node {${\mathbf{v}}_\mathrm{jet}$};
-      \draw (4.0,1.0) node {$\tilde{\mathbf{v}}_\mathrm{jet}$};
+      \draw [-angle 45,thick] (2,-0.39) -- (3.5,-0.1);
+      \draw [-angle 45,thick,dashed,dash pattern = on 4pt off 1pt] (2,-0.39) -- (2,1.5);
+      \draw [-angle 45,thick] (2,-0.39) -- (2.5,0.8);
+      \draw [-angle 45,thick,red] (2,-0.39) -- (3.5,0.8);
+      \fill[black] (-2,0.39) circle (2pt);
+      \fill[black] (2,-0.39) circle (2pt);
+      \draw (4.1,-0.1) node {\large ${\mathbf{v}}_\mathrm{orb}$};
+      \draw (2.7,1.0) node {\large ${\mathbf{v}}_\mathrm{jet}$};
+      \draw (4.0,1.0) node {\large $\tilde{\mathbf{v}}_\mathrm{jet}$};
+      \draw (2.0,1.8) node {\large $\mathbf{L}_\mathrm{orb}$};
     \end{tikzpicture}
   \end{center}
-  \caption{Jet and orbital configuration. The effect of
-    $\mathbf{v}_\mathrm{orbital}$ is to precess the jet as the BH
-    moves along the orbit. Note that
-    $\tilde{\mathbf{v}}_\mathrm{jet}={\mathbf{v}}_\mathrm{orbital}+{\mathbf{v}}_\mathrm{jet}$.}
+  \caption{Jet and orbital configuration. The orbital velocity
+    $\mathbf{v}_\mathrm{orb}$ causes the jet to precess as the BH
+    moves along the orbit. The net jet velocity is
+    $\tilde{\mathbf{v}}_\mathrm{jet}={\mathbf{v}}_\mathrm{orb}+{\mathbf{v}}_\mathrm{jet}$,
+    where $\mathbf{v}_\mathrm{jet}$ is its ejection velocity at the
+    source.}
   \label{fig:BH_orbit}
 \end{figure}
 
-\section{Evolution of jet structure}
+In a gas-rich galaxy merger, the BH binary loses its angular
+momentum by torquing the surrounding disk through spiral arms and
+expelling gas out of a region twice as large as the binary orbit
+\citep{2005ApJ...622L..93M, 2007PASJ...59..427H, 2008ApJ...672...83M,
+  2009MNRAS.393.1423C}.  Fresh gas re-enters the region of the binary
+as a result of turbulent transport of angular momentum in the
+surrounding disk \citep{2008ApJ...672...83M, 2012ApJ...755...51N,
+  2012MNRAS.427.2680K, 2012A&A...545A.127R}.  Since the expelled gas
+carries a specific angular momentum of $\sim va$, the coalescence time
+of the binary is inversely proportional to the supply rate of fresh
+gas into the binary region.  In a steady state, this supply rate,
+$\dot M$ is proportional to the accretion rate of the circumbinary gas
+disk.  But only a fraction of gas that enters the central gap accretes
+onto the black hole and fuels quasar activity.  Therefore, it is
+appropriate to express $\dot M$ in Eddington units, $\dot{\mathcal
+  M}\equiv\dot M /\dot M_E$, where $\dot M_E$ is the accretion rate
+required to power the limiting Eddington luminosity with a radiative
+efficiency of 10\%, $\dot M_E=2.3 M_\odot\, \mathrm{yr}^{-1}M_8$.  We
+therefore have \citep{2010PhRvD..81d7503L}
+\begin{equation}
+  \frac{a}{\dot a} = t_\mathrm{gas}\approx\frac{J}{\dot Mva}=1.1\times 10^7\,
+  \mathrm{yr}\,\dot{\mathcal M}^{-1},
+\end{equation}
+where $J=\mu va$ is the binary's angular momentum and $\mu=M/2$ is the
+binary's reduced mass.  This time scale is greater by two orders of
+magnitude than the time scale for coalescence due to angular momentum
+loss by GW emission, which for circular orbits is given by
+\citep{1964PhRv..136.1224P}
+\begin{equation}
+\frac{a}{\dot a} = t_\mathrm{GW} = \frac{5}{256}\frac{c^5a^4}{G^3M^2\mu}=2.53\times 10^5\,\mathrm{yr}\,\frac{a_{16}^4}{M_8^3}.
+\end{equation}
+By setting $t_\mathrm{gas}=t_\mathrm{GW}$, we can get the orbital
+parameters for the binary when GWs take over.  The orbital speed at
+this stage of the binary's evolution is given by
+\begin{equation}
+  v = 3.6\times 10^3\, \mathrm{km~s}^{-1}(\dot{\mathcal{M}}M_8)^{1/8},
+  \label{eqn:v}
+\end{equation}
+The separation between the two black holes at this instant is given by
+\begin{equation}
+  a = 8.3\times 10^{-3}\, \mathrm{pc}\, M_8^{3/4}\dot{\mathcal{M}}^{-1/4}.
+  \label{eqn:a}
+\end{equation}
+Note that the separation is dependent on the gas accretion rate.  This
+evolution of the binary separation and orbital velocity is shown in
+Figure~\ref{fig:evolve}.
 
-Binary separation, jet velocity, and the two angles, tell us about the
-instantaneous configuration of the jet.  (Recall that we are only
-considering an equal mass binary.)  The jet evolution is governed by
-the dynamical evolution of the binary separation.  During the
-gas-dominated phase, this is given by
+\begin{figure}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw [-angle 45,dashed,thick,dash pattern = on 7pt off 2pt] (0,0) -- (3.0,0);
+      \draw [-angle 45,dashed,thick,dash pattern = on 7pt off 2pt] (0,0) -- (0,4.0);
+      \draw [-angle 45,thick] (0,0) -- (2.0,4.0);
+      \draw [-angle 45,thick,red] (0,0) -- (5.0,4.0);
+      \draw (1.0,2.0) arc (63:90:2.2);
+      \draw (2.0,1.6) arc (38.6:63:2.56);
+      \draw (0.5,2.5) node {\large $\chi$};
+      \draw (1.90,2.3) node {\large $\psi$};
+      \draw [dashed,thick,dash pattern = on 7pt off 2pt] (0,0) -- (3.0,6.0);
+      \draw (0.0,4.5) node {\large $\mathbf{L}_\mathrm{orb}$};
+      \draw (3.5,0.0) node {\large $\mathbf{v}_\mathrm{orb}$};
+      \draw (1.0,3.0) node {\large $\mathbf{v}_\mathrm{jet}$};
+      \draw (5.3,4.2) node {\large \textcolor{red}{$\mathbf{\tilde v}_\mathrm{jet}$}};
+    \end{tikzpicture}
+  \end{center}
+  \caption{The orbital velocity $\mathbf{v}_\mathrm{orbital}$
+    introduces the jet precision angle $\psi$.  Without the orbital
+    motion, $\psi=0$ and the jet traces a cylindrical surface.  With
+    the orbital motion, the net red velocity vector oscillates around
+    the solid black vector and produces a conical surface with $\psi$
+    as its half-opening angle.  Note that $v_\mathrm{orb}$ is
+    exagerated here.  In practice, $v_\mathrm{orb}\ll
+    v_\mathrm{jet}\sim c$.  This figure then shows that
+    $\sin{\psi}\sim\tan{\psi}=v_\mathrm{orb}\cos{\chi}/v_\mathrm{jet}$.}
+  \label{fig:jet}
+\end{figure}
+
+In the GW dominated phase of binary's evolution, recent simulations
+show that the BHs can continue to accrete gas from the circumbinary
+disk all the way until merger \citep{2015MNRAS.446L..36F}.  At this
+stage, we consider a ballistic jet emanating from one of binary's
+member BHs at speed $\beta=v_\mathrm{jet}/c$ at an angle $\chi$ to the
+direction of the orbital angular momentum.  This geometry is depicted
+in Figures~\ref{fig:BH_orbit} and \ref{fig:jet}.  As a result of the
+binary orbit, the jet will wiggle on a conical surface.  (In the limit
+of a small binary velocity, i.e., at large relative separations, the
+jet material will move on a cylindrical surface.)  The half-opening
+angle of the cone is given by \citep{1993ApJ...409..130R}
 \begin{equation}
-\frac{a}{\dot a} = \mu/\dot M = 1.1\times 10^7\, \mathrm{yr}\,\dot{\mathcal{M}}^{-1}.   
+  \sin\psi = \frac{v_\mathrm{orb}\cos\chi}{v_\mathrm{jet}}.
 \end{equation}
-This increases by two orders of magnitude during the GW phase to
-\begin{equation}
-\frac{a}{\dot a} = \frac{5}{256}\frac{c^5a^4}{G^3M^2\mu}=2.53\times 10^5\,\mathrm{yr}\,\frac{a_{16}^4}{M_8^3}.
-\end{equation}
-From Equation (\ref{eqn:vorb}), the orbital velocity of each BH evolves as
+When the binary separation is where gravitational wave-induced
+inspiral begins, it has a velocity given by equation~(\ref{eqn:v}),
+and the separation between the two black holes at this instant is
+given by equation~(\ref{eqn:a}).  Also, from equation
+(\ref{eqn:vorb}), the orbital velocity of each BH evolves as
 \begin{equation}
   \frac{\dot v_\mathrm{orb}}{v_\mathrm{orb}} = -\frac{1}{2}\frac{\dot a}{a}.
 \end{equation}
@@ -152,344 +272,235 @@ This can be solved analytically to get
 \begin{equation}
   \sin\psi = \sin\psi_0\left(\frac{a_0}{a}\right),
 \end{equation}
-where $\psi_0$ and $a_0$ are the initial values. Thus as the binary
+where $\psi_0$ and $a_0$ are the initial values. Thus, as the binary
 continues to shrink the BH orbital velocity grows and the opening
-angle of the conical jet increases (cone gets wider and wider).  The
-rate at which this happens tells everything about the binary's
-dynamical evolution.
+angle of the conical jet increases (cone opens wider).  The rate at
+which this happens reflects the binary's dynamical evolution.
+Figure~\ref{fig:evolve} shows the evolution of the half-opening angle
+in the gas and GW-dominated phase.
 
-Figures \ref{fig:a_gw} show this evolution for the numbers assumed
-above.
+\begin{figure}
+  \begin{center}
+    \includegraphics*[width=\columnwidth]{evolve.pdf}
+    % gw.py (case 5) 
+  \end{center}
+  \caption{Evolution of the binary parameters.  As the binary
+    separation $a$ decreases, the orbital velocity $v_\mathrm{orb}$
+    and the opening angle $\psi$ of the precessing jet, increase.}
+  \label{fig:evolve}
+\end{figure}
 
-\section{Use jets to flag GW binaries}
 
-Figure \ref{fig:a_gas} shows the evolution of the binary when it is in
-the gas accretion phase.  We have chosen steady gas accretion with
-$\dot{\mathcal{M}}=1$ here for simplicity.  Note that the starting
-separation here is about 100 pc. 
+\section{Jet precession}
 
-What we find is that in the beginning the binary orbital period is
-about $10^7$ yr. So the jet will show no signs of precision at this
-point.  However as the binary separation reduces to about 10 pc, the
-period reduces to $\sim 100$ yr and the jet will start showing
-precision.  At this point the time scale for binary merger is $\sim
-10^7$ yr.
-
-In other words \emph{since the gas accretion time scale is of the
-  order of the typical jet lifetime} the jet structure will show a
-transition from a straight jet to a precessing jet at a separation of
+We now ask if it would be possible to observe the opening of the jet
+morphology.  In order to do this, it is necessary to map the above
+calculations to the observer's frame \citep{1982ApJ...262..478G}.  At
+a large distance compared to the binary's separation, the jet geometry
+is illustrated in Figure \ref{fig:jetgeom}.  Here the source frame of
+reference is shown by $x^\prime$, $y^\prime$, $z^\prime$ coordinate
+systems.  The $x$, $y$, $z$ coordinate system represents the
+observer's frame such that the $yz$ is the plane of the sky.  Further,
+the jet is oriented such that that the $y^\prime$ axis coincides with
+the $y$ axis, the original direction of jet emission is at an angle
+$i$ relative to the line of sight ($x$-axis).  For simplicity, we also
+assume that the $z^\prime$ axis is in the $xz$ plane.  Then the jet
+will precess on a cone with a half-opening angle $\psi$ and an angular
+velocity of precession $\Omega$.  In the source frame of reference,
+the equation of the jet is then given by \citep{1981ApJ...246L.141H}
+\begin{eqnarray}
+  &v_x=&s_\mathrm{jet}\beta c\left[\sin\psi\sin i\cos\Omega t+\cos\psi\cos i\right],\\
+  &v_y=&s_\mathrm{jet}\beta c\sin\psi\sin\Omega t,~\,\mathrm{and}\\
+  &v_z=&s_\mathrm{jet}\beta c\left[\cos\psi\sin i-\sin\psi\cos i\cos\Omega t\right]. 
+\end{eqnarray}
+Here $s_\mathrm{jet}=\pm 1$ for forward and backward jets,
+respectively.  The coordinates of a jet particle in the sky is then
+given by $z=v_zt$ and $y=v_yt$.  However, because of superluminal
+motion, the observer will see this on the sky as
 \begin{equation}
-  v_\mathrm{apparant}\left(\frac{t_0}{10^7}\right).
+  z=v_zt/(1-v_x/c)
 \end{equation}
-from the binary.  \textbf{[Convert this to arcseconds on the sky.]}
-The location at which the jet morphology shows this precision and the
-opening angle evolution give a direct constraint on the epoch of
-graviational wave emission of the binary.
-
-Thus the new insight here is that the signature of the jet precision
-due to GW-inspiral is observationally accessible. 
-
-\section{Jet morphology as probe of GR}
-
-Variability of lensed quasars constraints the size of accretion disks
-to about $10^{15}$ cm ($\sim 10^{-3}$ pc) \citep{2010ApJ...712.1129M}.
-This is smaller than the $a_\mathrm{GW}$ by a factor of less than 10.
-
-This means that the GW-induced precision will be visible in the jet
-precision for a very short distance near the source before the
-accretion disk is disrupted.
-
-Last plots in this note show some example jets.  In all these plots
-$\psi$ is the half-opening angle of the conical jet, and $i$ is the
-angle between the jet and the line of sight.
-
-A rough argument about observability: For our example, the period is
-0.1 yr at $t = 63967.3816055$ yr.  We can assume that the chirp begins
-at $t = 10^4$ yr when period is $\sim 2$ yr.  So the total duration of
-the chirp is $5.3\times 10^4$ yr.
-
-A 2 yr period gives $\sim 1$ milli-arcsec wiggles in the jet.  So the
-idea is that the wiggles will change from milli-arcsec to micro-arcsec
-over $\sim 10^5$ yr.  That is over a length scale of $\sim 30$ kpc.
-
-Now the question is: how big an angle would a 30 kpc jet subtend on
-the sky in arcsecs?
-
-Let us assume $z = 0.302$ which is the redshift of 1928+738 jet that
-Roos (1993) have studied.  At this redshift 30 kpc will subtend about
-6.748195445702 arcsec.
-
-So we are talking about mciro- to milli-arcssec scale wiggles in tens
-of arcsec scale jets.  Jets are routinely seen over hundreds of
-arcsec.
-
-
-
-\section{Conclusion}
-
-From Figures \ref{fig:a_gw} we can make these four points:
-
-\begin{itemize}
-\item From the jet structure, we can tell how long until the binary enters GW-induced inspiral.
-\item In particular, we can flag binaries that are entering GW-inspiral now.
-\item We could locate binaries that are now in GW inspiral phase but
-  have helical jet structures that are impossible to resolve.
-\item From the above jet structure, we get an idea of the history of gas inflow on the binary.
-\end{itemize}
-
-There will also probably be some spectral evolution along the jet.
-This spectral evolution will act as a cross check on the evolution
-deduced from the jet morphology.  An important advantage of this
-technique is that it allows us to locate binaries that may be
-impossible to locate even with VLBI.
+and
+\begin{equation}
+  y=v_yt/(1-v_x/c)
+\end{equation}
+respectively.  In angular coordinates, the motion on the sky is given
+by $\phi_z=z/d$ and $\phi_y=y/d$ where $d$ is the angular diameter
+distance of the binary.  Because of superluminal motion, the forward
+jet is stretched while the backward jet is compressed.
 
 \begin{figure}
   \begin{center}
     \begin{tikzpicture}
-      \draw [->,densely dashed,thick] (0,0) -- (3.0,0);
-      \draw [->,densely dashed,thick] (0,0) -- (0,4.0);
-      \draw [->,thick] (0,0) -- (2.0,4.0);
-      \draw [->,thick,red] (0,0) -- (5.0,4.0);
-      \draw (1.0,2.0) arc (63:90:2.2);
-      \draw (2.0,1.6) arc (38.6:63:2.56);
-      \draw (0.5,2.5) node {$\chi$};
-      \draw (1.90,2.3) node {$\psi$};
-      \draw [densely dashed,thick] (0,0) -- (3.0,6.0);
-      \draw (0.0,4.5) node {$\mathbf{L}_\mathrm{orbital}$};
-      \draw (4.0,0.0) node {$\mathbf{v}_\mathrm{orbital}$};
-      \draw (1.0,3.0) node {$\mathbf{v}_\mathrm{jet}$};
+      \draw [thick,color=brown] (0,0) -- (-4.0,0);
+      \draw [thick,color=brown] (0,0) -- (0,4.0);
+      \draw [thick,color=brown] (0,0) -- (2.6,-3.0);
+      
+      \draw [dashed,thick,dash pattern = on 7pt off 2pt,color=red] (0.05,0.0) -- (0.05,4.0);
+      \draw [dashed,thick,dash pattern = on 7pt off 2pt,color=red] (0,0.0) -- (3.46,-2.0);
+      \draw [dashed,thick,dash pattern = on 7pt off 2pt,color=red] (0,0.0) -- (-3.87,-1.0);
+
+      \draw [thick,rotate around={-75:(-2.95,-0.76)}] (-2.95,-0.76) ellipse (0.55 and 0.2);
+      \draw [thick,rotate around={12:(3.04,0.24)}] (3.04,0.238) arc (-90:90:0.2 and 0.55);
+      \draw [thick,color=gray,rotate around={12:(3.04,0.24)},dashed](3.04,0.238) arc (270:90:0.2 and 0.55);
+      
+      \draw [thick] (-2.82,-1.3) -- (2.82,1.3);
+      \draw [thick] (-3.09,-0.24) -- (3.09,0.24);
+
+      \draw (0.1,4.3) node {\large \textcolor{brown}{$y$},\textcolor{red}{$\,y^\prime$}};
+      \draw (-4.2,0) node {\textcolor{brown}{\large $z$}};
+      \draw (2.75,-3.17) node {\textcolor{brown}{\large $x$}};
+      \draw (3.1,-3.57) node {\large [line of sight]};
+      \draw (-4.1,-1.059) node {\large \textcolor{red}{$z^\prime$}};
+      \draw (3.7,-2.1) node {\textcolor{red}{\large $x^\prime$}};
+
+      \draw [thick,color=brown] (-1.0,-0.258) arc (230:283:1.8);
+      \draw (-0.5,-1.0) node {\textcolor{brown}{\large $i$}};
+
+      \draw (-2.0,-0.92) arc (204.75:194.48:2.2015);
+      \draw (-2.0,-1.3) node {\large $\psi$};
+
     \end{tikzpicture}
   \end{center}
-  \caption{The orbital velocity $\mathbf{v}_\mathrm{orbital}$
-    introduces the jet precision angle $\psi$.  Without the orbital
-    motion, $\psi=0$ and the jet traces a cylindrical surface.  With
-    the orbital motion, as the BH moves along its circular orbit, the
-    red vector oscillates around the solid black vector and produces a
-    conical surface with $\psi$ as its half-opening angle.  Note that
-    $v_\mathrm{orbital}$ is exagerated here.  In practice,
-    $v_\mathrm{orbital}\ll v_\mathrm{jet}\sim c$.  This figure then
-    shows that
-    $\sin{\psi}\sim\tan{\psi}=v_\mathrm{orbital}\cos{\chi}/v_\mathrm{jet}$.}
-  \label{fig:jet}
+  \caption{Geometry of the jet.  The observer's sky is in the $yz$
+    plane, so that the line of sight is along the $x$-axis.  The jet
+    precesses around the $z^\prime$ axis with half-opening angle
+    $\psi$. The $y$ and $y^\prime$ axes overlap, and $z$, $x$, and
+    $z^\prime$ axes are co-planer.  The angle between the $z^\prime$
+    axis and the line of sight is $i$.  This geometry is valid in the
+    limit $a\ll z^\prime\psi$.}
+  \label{fig:jetgeom}
 \end{figure}
 
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{a_gw.pdf} &
-    \includegraphics*[width=2.2in]{v_orb.pdf} &
-    \includegraphics*[width=2.2in]{psi.pdf}
-  \end{tabular}
-\end{center}
-\caption{Evolution of the binary separation.  Time $t$ is time since the gravitational wave induced phase began.}
-\label{fig:a_gw}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{a_gas.pdf} &
-    \includegraphics*[width=2.2in]{v_orb_gas.pdf} &
-    \includegraphics*[width=2.2in]{psi_gas.pdf}
-  \end{tabular}
-\end{center}
-\caption{Evolution of the binary separation.  Time $t$ is time since the gravitational wave induced phase began.}
-\label{fig:a_gas}
-\end{figure*}
-
-%% \begin{figure}
-%%   \begin{center}
-%%     \includegraphics*[width=\columnwidth]{a_gw.pdf}
-%%   \end{center}
-%%   \caption{Evolution of the binary separation.  Time $t$ is time since
-%%     the gravitational wave induced phase began.}
-%%   \label{fig:a_gw}
-%% \end{figure}
-
-%% \begin{figure}
-%%   \begin{center}
-%%     \includegraphics*[width=\columnwidth]{v_orb.pdf}
-%%   \end{center}
-%%   \caption{Evolution of the orbital velocity}
-%%   \label{fig:v_orb}
-%% \end{figure}
-
-%% \begin{figure}
-%%   \begin{center}
-%%     \includegraphics*[width=\columnwidth]{psi.pdf}
-%%   \end{center}
-%%   \caption{Evolution of the intrinsic half-opening angle of the
-%%     conical jet.  it is important to note that the jet lifetime is
-%%     about $10^7$ yr.}
-%%   \label{fig:psi}
-%% \end{figure}
-
-\pagebreak
-\pagebreak
-
-\clearpage
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=\columnwidth]{jet_i10_psi20.pdf}
-  \end{center}
-  \caption{$i=10^\circ$, $\psi=20^\circ$, $\beta=0.90$}
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=\columnwidth]{jet_i40_psi20.pdf}
-  \end{center}
-  \caption{$i=40^\circ$, $\psi=20^\circ$, $\beta=0.90$}
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=\columnwidth]{jet_i80_psi20.pdf}
-  \end{center}
-  \caption{$i=80^\circ$, $\psi=20^\circ$, $\beta=0.90$}
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=\columnwidth]{jet_i40_psi40.pdf}
-  \end{center}
-  \caption{$i=40^\circ$, $\psi=40^\circ$, $\beta=0.90$}
-\end{figure}
-
-\clearpage
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_90.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_80.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_40.pdf}
-  \end{tabular}
-\end{center}
-\caption{Jet structure in the source frame. $\beta=0.9, 0.8, 0.4$ from left to right.}
-\label{fig:srcframe}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_90_obs.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_80_obs.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_40_obs.pdf}
-  \end{tabular}
-\end{center}
-\caption{Jet structure in the observer frame. $\beta=0.9, 0.8, 0.4$ from left to right.}
-\label{fig:obsframe}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_90_ang.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_80_ang.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta_0_40_ang.pdf}
-  \end{tabular}
-\end{center}
-\caption{Jet structure in angular coordinates. $\beta=0.9, 0.8, 0.4$ from left to right.}
-\label{fig:ang}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta0_90_full.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta0_90_zoom1.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_psi20_beta0_90_zoom2.pdf}
-  \end{tabular}
-\end{center}
-\caption{Jet morphology without accounting for opening angle
-    evolution}
-\label{fig:jet_nopsi}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_full.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_zoom1.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_zoom2.pdf}
-  \end{tabular}
-\end{center}
-\caption{Jet morphology with opening angle evolution.}
-\label{fig:jet_psi}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_full.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_zoom1.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_zoom2.pdf}
-  \end{tabular}
-\end{center}
-\caption{Jet morphology with opening angle evolution.}
-\label{fig:jet_psi}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{ccc}
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_full.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_zoom1.pdf} &
-    \includegraphics*[width=2.2in]{jet_i40_beta0_90_zoom2.pdf}
-  \end{tabular}
-\end{center}
-\caption{Jet morphology with opening angle evolution.}
-\label{fig:jet_psi}
-\end{figure*}
+Finally, we assume that the emission from each jet particle is
+optically thin at the frequency of observation with a spectrum in the
+rest frame of the particle given by $P(\nu)\propto \nu^{-\alpha}$
+\citep{1982ApJ...262..478G}.  The observed flux density $S(\nu)$ in erg
+cm$^{-2}$ Hz$^{-1}$ is given by
+\begin{equation}
+  S(\nu)=S_r(\nu)D^{3+\alpha},
+\end{equation}
+where $D$ is the Doppler shift parameter
+$[\gamma(1-\beta\cos\phi)]^{-1}$ and $S_r$ is the rest frame flux
+density.  Further to consider the effects of jet evolution we assume
+that $S_r$ decreases with time according to a simple power law
+\begin{equation}
+  S_r\propto t^{-\delta}.
+\end{equation}
+We assume $\delta=1$ and $\alpha=1$, hereafter. 
+% Need to justify parameter values.
+% Comment on relativistic corrections
 
 \begin{figure*}
 \begin{center}
   \begin{tabular}{cc}
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot1.0_full}.pdf} &
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot1.0_zoom1}.pdf} 
+    \includegraphics*[scale=0.45]{{jet_i40_beta0.90_mdot1.00_full}.pdf} &
+    \includegraphics*[scale=0.45]{jet_check_zoom1.pdf}
   \end{tabular}
 \end{center}
-\caption{$a^4/M^3=1$}
+\caption{The left panel shows forward and backward jets for an
+  equal-mass binary with total mass $M=10^{10}$~M$_\odot$.  We have
+  assumed $i=40^\circ$, $\beta=0.9$, and $d = 100$~Mpc.  The jets are
+  twisted because of the apparant superluminal motion.  Also evident
+  is the opening of the jet and the radio jet chirp.  Right panel
+  shows normalised brightness of the inner 30~mas region of the
+  forward jet.}
 \label{fig:jet_mdot1.0}
 \end{figure*}
 
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{cc}
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot1.00_image_full}.pdf} &
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot1.00_image_zoom1}.pdf} 
-  \end{tabular}
-\end{center}
-\caption{$a^4/M^3=1$}
-\label{fig:jet_mdot1.0_image}
-\end{figure*}
+\section{Flagging GW binaries and probing GR}
 
+As the binary evolves, its increasing orbital period and speed, and
+the apparant superluminal motion effect, together result in a jet
+morphology with an increasing opening angle and increasingly rapid
+periodic variation together with a twisted shape.
+Figure~\ref{fig:jet_mdot1.0} shows these three features for an
+equal-mass binary with total mass $M=10^{10}$~M$_\odot$.  For
+concreteness, we have assumed $i=40^\circ$ and $\beta=0.9$.  The
+angular diameter distance to the binary is assumed to be $d =
+100$~Mpc, which corresponds to redshift $z\sim 0.3$.  The forward jet
+streched on the sky while the backward jet is compressed due to the
+superluminal motion.  The right panel of Figure~\ref{fig:jet_mdot1.0}
+zooms into the inner region of the forward jet and shows that the
+binary creates wiggles in the jet morphology of the order of a
+milli-arcsecond.  The duration of the binary evolution captured by
+Figure~\ref{fig:jet_mdot1.0} is 100 yr.
 
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{cc}
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot10.00_full}.pdf} &
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot10.00_zoom1}.pdf} 
-  \end{tabular}
-\end{center}
-\caption{$a^4/M^3=10$}
-\label{fig:jet_10.0}
-\end{figure*}
+% Add discussion about the chirp of the signal 
 
-\begin{figure*}
+\begin{table}
 \begin{center}
-  \begin{tabular}{cc}
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot0.10_full}.pdf} &
-    \includegraphics*[width=\columnwidth]{{jet_i40_beta0.90_mdot0.10_zoom1}.pdf} 
-  \end{tabular}
+\begin{tabular}{c l}
+\hline 
+Parameter & Description \\ 
+\hline 
+$M$ & Total mass \\
+$\zeta$ & Mass asymmetry \\
+$\chi$ & Intrinsic jet direction \\
+$e$ & Orbital eccentricity \\
+$\alpha$ & SED slope \\
+$\delta$ & Time evolution of brightness evolution \\
+$\beta$ & Jet speed \\
+$i$ & Orbital inclination \\ 
+$\dot{\mathcal M}$ & Gas accretion rate\\
+\hline
+\end{tabular}
 \end{center}
-\caption{$a^4/M^3=0.1$}
-\label{fig:jet_mdot0.1}
-\end{figure*}
+\caption{Parameters of the problem.}
+\label{table:params}
+\end{table}
+
+\section{Conclusion}
+
+Using a model of jet precession in a binary BH, we have shown that the
+jet morphology of a binary that is entering its GW-induced phase of
+inspiral shows a distinct chirping morphology. Jets in these binaries
+have a biconical morphology.  After the binary enters the GW phase,
+the opening angle of cone rapidly increases within a distance of tens
+of milli-arcseconds.  In addition, the periodicity of the jet's motion
+on the conical surface increases as the orbital period of the binary
+goes up in this stage of its evolution.  Finally, due to apparent
+superluminal motion and the widening opening angle, the jet is twisted
+into a peculiar morphology.  The jet geometry can be used to infer the
+set of dynamical and geometrical parameters, listed in
+Table~\ref{table:params}.
+
+% Give redshift numbers
+These milli-arcsecond features can be resolved using long baseline
+radio interferometry \citep{2001ChJAA...1..236Q}.  At higher
+redshifts, jets are fainter and the wiggles become more difficult to
+resolve.  However, it might be possible to resolve binaries with very
+unequal mass ratios, eccentric orbits, or suitable inclinations.  The
+future Square Kilometer Array (SKA) should make microarcsecond
+resolution possible, which could increase the detection rate of these
+objects \citep{2014arXiv1412.5971P}.
+
+The jet morphology acts as an electromagnetic counterpart for chirping
+gravitational wave sources.  BH binaries are expected to be the
+brightest GW sources in the universe.  Current ground based GW
+detectors such as LIGO are sensitive to low-mass BH binaries at high
+redshift, which would be difficult to detect with this method.
+However, future detectors such as eLISA are sensitvie to GW emission
+from $10^7$--$10^9$ M$_\odot$ BHs \citep{2013CQGra..30x4009S}.  Pulsar
+Timing Arrays are sensitive to even higher binary masses.  Monitoring
+of jet morphologies with features outlined in this paper will put a
+lower bound on the expected abundance of bright GW sources for this
+experiments. Moreover, combined GW and electromagnetic observations of
+compact binary mergers should enable detailed studies of astrophysical
+processes in the strong-field gravity regime
+\citep{2005ApJ...629...15H}.
+
+% Mention old observations which show similar features
+% There is a todo in a PS email from Avi 
+
+\section*{Acknowledgments}
+
+We acknowledge useful discussions with Enrico Ramirez-Ruiz and Alberto
+Rorai.  This work was supported in part by NSF grant AST-1312034 (for
+A.~L.).
 
 \bibliography{refs}
 \end{document}
+
 
 
