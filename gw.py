@@ -2,14 +2,21 @@ import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
 mpl.rcParams['font.serif'] = 'cm'
-mpl.rcParams['font.size'] = '11'
+mpl.rcParams['font.size'] = '22'
 import matplotlib.pyplot as plt
 import numpy as np
+
+mygray="#808080"
+myblue="#3D7AB8"
+mygreen="#99CC66"
+myred="#CC4D33"
+myviolet="#7171B7"
+mybeige="#CC9966"
 
 M = 1.0e8 # Msun; total mass of the equal-mass binary 
 
 pcto_10to16cm = 0.003241
-Mdot = 10.0 # Eddington units
+Mdot = 1.0 # Eddington units
 a0 = 8.3e-3*(M*1.0e-8)**(3./4.)*(Mdot**(-0.25)) # pc 
 a0 /= pcto_10to16cm # 1.0e16 cm
 coeff = -2.56e5/(M*1.0e-8)**3 
@@ -81,7 +88,7 @@ if debug:
         print t[i], a_gas[i]
         i += 1
 
-case = 4
+case = 5
 if case == 0: 
         
     # Plot showing evolution of a.
@@ -219,4 +226,45 @@ elif case == 4:
     ax.set_xlabel('$t$ [yr]',labelpad=15) 
     ax.set_ylabel('$a$ [pc]')
 
-plt.show()
+elif case == 5: 
+
+    fig = plt.figure(figsize=(7, 7), dpi=100)
+    plt.subplots_adjust(hspace=0.001)
+    
+    ax = fig.add_subplot(3, 1, 1)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    a *= 0.003241
+    ax.set_xlim(1.0e1,1.0e7)
+    ax.plot(t,a,c=myred,lw=3)
+    ax.set_ylabel('$a$ [pc]')
+    yticks = ax.yaxis.get_major_ticks()
+    yticks[1].set_visible(False)
+    ax.set_xticklabels('')
+    
+    ax = fig.add_subplot(3, 1, 2)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.set_xlim(1.0e1,1.0e7)
+    ax.plot(t,v,c=myblue,lw=3)
+    ax.set_ylabel('$v_\mathrm{orb}$ [km$/$s]')
+    ax.set_xticklabels('')
+    
+    ax = fig.add_subplot(3, 1, 3)
+    ax.tick_params('both', which='major', length=7, width=1)
+    ax.tick_params('both', which='minor', length=3, width=1)
+    ax.set_xscale('log')
+    ax.set_xlim(1.0e1,1.0e7)
+    ax.plot(t,psi,c=mybeige,lw=3)
+    ax.set_xlabel('$t$ [yr]',labelpad=15) 
+    ax.set_ylabel(r'$\psi$ [$^\circ$]')
+    yticks = ax.yaxis.get_major_ticks()
+    yticks[-1].set_visible(False)
+    
+    plt.savefig("evolve.pdf",bbox_inches='tight')
+    
+#plt.show()
