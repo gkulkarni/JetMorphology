@@ -1,52 +1,97 @@
-\documentclass[iop]{emulateapj}
-\bibliographystyle{apj}
-\usepackage{amsmath} 
-\usepackage{aas_macros,amssymb}
-\usepackage{natbib,graphicx,layouts}
-\usepackage{color,hyperref}
-\usepackage{bm}
-\definecolor{linkcolor}{rgb}{0,0,0.5}
-\definecolor{notecolor}{rgb}{0.8,0,0}
-\hypersetup{colorlinks=true,linkcolor=linkcolor,citecolor=linkcolor,
-  filecolor=linkcolor,urlcolor=linkcolor}
+\documentclass[a4paper,fleqn,usenatbib]{mnras}
+
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+%% \usepackage{newtxtext,newtxmath} 
+
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%% \usepackage{mathptmx}
+%% \usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+\usepackage{graphicx}	
+\usepackage{amsmath}	
+\usepackage{amssymb}
 \usepackage{tikz}
 \usetikzlibrary{arrows,decorations.pathmorphing}
 
-\shorttitle{Chirping Jets from Black Hole Binaries}
-\shortauthors{Kulkarni et al.}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+\title[Chirping Jets from Black Hole Binaries]{Radio Crickets:
+  Chirping Jets from Black Hole Binaries Entering their Gravitational
+  Wave Inspiral}
+
+\author[Kulkarni and Loeb]{
+Girish Kulkarni,$^{1}$\thanks{E-mail: kulkarni@ast.cam.ac.uk}
+and Abraham Loeb$^{2}$\thanks{E-mail: aloeb@cfa.harvard.edu}
+\\
+$^{1}$Institute of Astronomy and Kavli
+  Institute of Cosmology, University of Cambridge, Madingley Road,
+  Cambridge CB3 0HA, UK\\ 
+$^{2}$Institute for Theory \& Computation,
+  Harvard University, 60 Garden Street, Cambridge, MA 02138, USA\\ 
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted ---. Received ---; in original form ---}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2015}
+
+% Don't change these lines
 \begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
 
-\title{Radio Crickets: Chirping Jets from Black Hole Binaries Entering
-  their Gravitational Wave Inspiral} \author{Girish
-  Kulkarni\altaffilmark{1} and Abraham Loeb\altaffilmark{2}}
-\altaffiltext{1}{Institute of Astronomy and Kavli Institute of
-  Cosmology, University of Cambridge, Madingley Road, Cambridge CB3
-  0HA, UK; \email{kulkarni@ast.cam.ac.uk}} \altaffiltext{2}{Institute
-  for Theory \& Computation, Harvard University, 60 Garden Street,
-  Cambridge, MA 02138, USA; \email{aloeb@cfa.harvard.edu}}
-
+% Abstract of the paper
 \begin{abstract}
-We study a novel electromagnetic signature of supermassive black hole
-binaries whose inspiral stars being dominated by gravitational wave
-(GW) emission. Combined GW and electromagnetic observations of compact
-binary mergers would allow to use them as standard sirens for
-cosmology and a testing ground of general relativity.  If one of the
-binary members produces a radio jet, the helical chirping morphology
-of the jet can be used to infer the binary parameters.  For binaries
-with mass $10^7$--$10^{10}$ M$_\odot$ at redshifts $z<0.5$, the jet
-precesses along a biconical surface due to the binary's orbital
-motion.  When the binary enters the GW phase of its evolution, the
-opening angle widens, the jet exhibits milliarcsecond scale wiggles
-and the conical surface of jet precession is twisted due to the
-superluminal motion.  Monitoring these features in current and
-archival data will place a lower limit on sources that could be
-detected by eLISA and Pulsar Timing Arrays.  In the future,
-microarcsecond interferometry with the Square Kilometer Array will
-increase the potential usefulness of this technique.
+  We study a novel electromagnetic signature of supermassive black
+  hole binaries whose inspiral stars being dominated by gravitational
+  wave (GW) emission. Combined GW and electromagnetic observations of
+  compact binary mergers would allow to use them as standard sirens
+  for cosmology and a testing ground of general relativity.  If one of
+  the binary members produces a radio jet, the helical chirping
+  morphology of the jet can be used to infer the binary parameters.
+  For binaries with mass $10^7$--$10^{10}$ M$_\odot$ at redshifts
+  $z<0.5$, the jet precesses along a biconical surface due to the
+  binary's orbital motion.  When the binary enters the GW phase of its
+  evolution, the opening angle widens, the jet exhibits milliarcsecond
+  scale wiggles and the conical surface of jet precession is twisted
+  due to the superluminal motion.  Monitoring these features in
+  current and archival data will place a lower limit on sources that
+  could be detected by eLISA and Pulsar Timing Arrays.  In the future,
+  microarcsecond interferometry with the Square Kilometer Array will
+  increase the potential usefulness of this technique.
 \end{abstract}
 
-\keywords{BHs}
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+\begin{keywords}
+keyword1 -- keyword2 -- keyword3
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
 \label{sec:intro}
@@ -289,43 +334,8 @@ in the gas and GW-dominated phase.
 \end{figure}
 
 
-\section{Jet precession}
 
-We now ask if it would be possible to observe the opening of the jet
-morphology.  In order to do this, it is necessary to map the above
-calculations to the observer's frame \citep{1982ApJ...262..478G}.  At
-a large distance compared to the binary's separation, the jet geometry
-is illustrated in Figure \ref{fig:jetgeom}.  Here the source frame of
-reference is shown by $x^\prime$, $y^\prime$, $z^\prime$ coordinate
-systems.  The $x$, $y$, $z$ coordinate system represents the
-observer's frame such that the $yz$ is the plane of the sky.  Further,
-the jet is oriented such that that the $y^\prime$ axis coincides with
-the $y$ axis, the original direction of jet emission is at an angle
-$i$ relative to the line of sight ($x$-axis).  For simplicity, we also
-assume that the $z^\prime$ axis is in the $xz$ plane.  Then the jet
-will precess on a cone with a half-opening angle $\psi$ and an angular
-velocity of precession $\Omega$.  In the source frame of reference,
-the equation of the jet is then given by \citep{1981ApJ...246L.141H}
-\begin{eqnarray}
-  &v_x=&s_\mathrm{jet}\beta c\left[\sin\psi\sin i\cos\Omega t+\cos\psi\cos i\right],\\
-  &v_y=&s_\mathrm{jet}\beta c\sin\psi\sin\Omega t,~\,\mathrm{and}\\
-  &v_z=&s_\mathrm{jet}\beta c\left[\cos\psi\sin i-\sin\psi\cos i\cos\Omega t\right]. 
-\end{eqnarray}
-Here $s_\mathrm{jet}=\pm 1$ for forward and backward jets,
-respectively.  The coordinates of a jet particle in the sky is then
-given by $z=v_zt$ and $y=v_yt$.  However, because of superluminal
-motion, the observer will see this on the sky as
-\begin{equation}
-  z=v_zt/(1-v_x/c)
-\end{equation}
-and
-\begin{equation}
-  y=v_yt/(1-v_x/c)
-\end{equation}
-respectively.  In angular coordinates, the motion on the sky is given
-by $\phi_z=z/d$ and $\phi_y=y/d$ where $d$ is the angular diameter
-distance of the binary.  Because of superluminal motion, the forward
-jet is stretched while the backward jet is compressed.
+\section{Jet precession}
 
 \begin{figure}
   \begin{center}
@@ -370,6 +380,61 @@ jet is stretched while the backward jet is compressed.
   \label{fig:jetgeom}
 \end{figure}
 
+
+\begin{figure*}
+\begin{center}
+  \begin{tabular}{cc}
+    \includegraphics*[scale=0.45]{{jet_i40_beta0.90_mdot1.00_full}.pdf} &
+    \includegraphics*[scale=0.45]{jet_check_zoom1.pdf}
+  \end{tabular}
+\end{center}
+\caption{The left panel shows forward and backward jets for an
+  equal-mass binary with total mass $M=10^{10}$~M$_\odot$.  We have
+  assumed $i=40^\circ$, $\beta=0.9$, and $d = 100$~Mpc.  The jets are
+  twisted because of the apparant superluminal motion.  Also evident
+  is the opening of the jet and the radio jet chirp.  Right panel
+  shows normalised brightness of the inner 30~mas region of the
+  forward jet.}
+\label{fig:jet_mdot1.0}
+\end{figure*}
+
+
+We now ask if it would be possible to observe the opening of the jet
+morphology.  In order to do this, it is necessary to map the above
+calculations to the observer's frame \citep{1982ApJ...262..478G}.  At
+a large distance compared to the binary's separation, the jet geometry
+is illustrated in Figure \ref{fig:jetgeom}.  Here the source frame of
+reference is shown by $x^\prime$, $y^\prime$, $z^\prime$ coordinate
+systems.  The $x$, $y$, $z$ coordinate system represents the
+observer's frame such that the $yz$ is the plane of the sky.  Further,
+the jet is oriented such that that the $y^\prime$ axis coincides with
+the $y$ axis, the original direction of jet emission is at an angle
+$i$ relative to the line of sight ($x$-axis).  For simplicity, we also
+assume that the $z^\prime$ axis is in the $xz$ plane.  Then the jet
+will precess on a cone with a half-opening angle $\psi$ and an angular
+velocity of precession $\Omega$.  In the source frame of reference,
+the equation of the jet is then given by \citep{1981ApJ...246L.141H}
+\begin{eqnarray}
+  &v_x=&s_\mathrm{jet}\beta c\left[\sin\psi\sin i\cos\Omega t+\cos\psi\cos i\right],\\
+  &v_y=&s_\mathrm{jet}\beta c\sin\psi\sin\Omega t,~\,\mathrm{and}\\
+  &v_z=&s_\mathrm{jet}\beta c\left[\cos\psi\sin i-\sin\psi\cos i\cos\Omega t\right]. 
+\end{eqnarray}
+Here $s_\mathrm{jet}=\pm 1$ for forward and backward jets,
+respectively.  The coordinates of a jet particle in the sky is then
+given by $z=v_zt$ and $y=v_yt$.  However, because of superluminal
+motion, the observer will see this on the sky as
+\begin{equation}
+  z=v_zt/(1-v_x/c)
+\end{equation}
+and
+\begin{equation}
+  y=v_yt/(1-v_x/c)
+\end{equation}
+respectively.  In angular coordinates, the motion on the sky is given
+by $\phi_z=z/d$ and $\phi_y=y/d$ where $d$ is the angular diameter
+distance of the binary.  Because of superluminal motion, the forward
+jet is stretched while the backward jet is compressed.
+
 Finally, we assume that the emission from each jet particle is
 optically thin at the frequency of observation with a spectrum in the
 rest frame of the particle given by $P(\nu)\propto \nu^{-\alpha}$
@@ -388,23 +453,6 @@ that $S_r$ decreases with time according to a simple power law
 We assume $\delta=1$ and $\alpha=1$, hereafter. 
 % Need to justify parameter values.
 % Comment on relativistic corrections
-
-\begin{figure*}
-\begin{center}
-  \begin{tabular}{cc}
-    \includegraphics*[scale=0.45]{{jet_i40_beta0.90_mdot1.00_full}.pdf} &
-    \includegraphics*[scale=0.45]{jet_check_zoom1.pdf}
-  \end{tabular}
-\end{center}
-\caption{The left panel shows forward and backward jets for an
-  equal-mass binary with total mass $M=10^{10}$~M$_\odot$.  We have
-  assumed $i=40^\circ$, $\beta=0.9$, and $d = 100$~Mpc.  The jets are
-  twisted because of the apparant superluminal motion.  Also evident
-  is the opening of the jet and the radio jet chirp.  Right panel
-  shows normalised brightness of the inner 30~mas region of the
-  forward jet.}
-\label{fig:jet_mdot1.0}
-\end{figure*}
 
 \section{Flagging GW binaries and probing GR}
 
@@ -497,7 +545,12 @@ We acknowledge useful discussions with Enrico Ramirez-Ruiz and Alberto
 Rorai.  This work was supported in part by NSF grant AST-1312034 (for
 A.~L.).
 
-\bibliography{refs}
+\bibliographystyle{mnras}
+\bibliography{refs} % if your bibtex file is called example.bib
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
 \end{document}
 
 
