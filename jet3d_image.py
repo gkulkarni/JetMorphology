@@ -2,7 +2,7 @@ import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
 mpl.rcParams['font.serif'] = 'cm'
-mpl.rcParams['font.size'] = '11'
+mpl.rcParams['font.size'] = '22'
 import matplotlib.pyplot as plt
 import numpy as np
 import math 
@@ -26,7 +26,8 @@ coeff = -2.56e5/(M*1.0e-8)**3
 d *= 1.0e3 # kpc
 
 #output_filename = 'jet_i%2d_psi%2d_beta%3.2f' % (i, psi, beta)
-output_filename = 'jet_i%2d_beta%3.2f_mdot%3.2f_image' % (i, beta, Mdot)
+#output_filename = 'jet_i%2d_beta%3.2f_mdot%3.2f_image' % (i, beta, Mdot)
+output_filename = 'jet_check' 
 save_pdf = True
 
 #psi *= np.pi/180.0 # radians 
@@ -111,26 +112,39 @@ intensity = np.array([0.0 if x!=x else x for x in intensity])
 max_intensity = intensity.max()
 intensity /= max_intensity
 
+intensity = np.array([np.log10(x) if x>0.0 else -2.0 for x in intensity])
+
 # fig = plt.figure(figsize=(7, 7), dpi=100)
 # ax = fig.add_subplot(1, 1, 1)
 # plt.plot(t_observed, intensity)
 # ax.set_xscale('log')
 # ax.set_yscale('log')
 
+phi_y_obs *= 1.0e3 # mas
+phi_z_obs *= 1.0e3 # mas 
+
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
 if case==1:
-    ax.set_ylim(-0.1,0.1)
-    ax.set_xlim(-0.01,0.03)
+    ax.set_ylim(-50,50)
+    ax.set_xlim(-10,30)
 
-s=plt.scatter(phi_z_obs,phi_y_obs,s=1,marker='.',edgecolor='none',rasterized=True,c=intensity,cmap=cm.Reds)
-ax.set_xlabel('arcsec',labelpad=15)
-ax.set_ylabel('arcsec',labelpad=15)
+s=plt.scatter(phi_z_obs,phi_y_obs,s=4,marker='o',edgecolor='none',vmax=0.0,
+              vmin=-2.0,rasterized=True,c=intensity,cmap=cm.RdBu_r)
+
+# cm = plt.get_cmap(cm.RdBu_r)
+# NPOINTS = phi_z_obs.size
+# ax.set_color_cycle([cm(1.*i/(NPOINTS-1)) for i in range(NPOINTS-1)])
+# for i in range(NPOINTS-1):
+#     ax.plot(phi_z_obs[i:i+20000],phi_y_obs[i:i+20000])
+
+ax.set_xlabel('mas',labelpad=15)
+ax.set_ylabel('mas',labelpad=15)
 
 divider = make_axes_locatable(ax)
 cax = divider.append_axes("right", "5%", pad="3%")
 cb = plt.colorbar(s, cax=cax)
-cb.set_label('intensity', labelpad=20)
+cb.set_label('logarithmic intensity', labelpad=20)
 cb.solids.set_edgecolor("face")
 
 if save_pdf: 

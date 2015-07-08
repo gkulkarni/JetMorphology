@@ -2,7 +2,7 @@ import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
 mpl.rcParams['font.serif'] = 'cm'
-mpl.rcParams['font.size'] = '11'
+mpl.rcParams['font.size'] = '22'
 import matplotlib.pyplot as plt
 import numpy as np
 import math 
@@ -14,7 +14,7 @@ beta = 0.90 # jet speed in units of c
 d = 100.0 # Mpc; Distance between jet and observer
 
 M = 1.0e10 # Msun; total mass of the equal-mass binary
-Mdot = 0.1 # Eddington units
+Mdot = 1.0 # Eddington units
 #a0 = 3.241e-3*(M*1.0e-8)**(3./4.) # pc
 a0 = 8.3e-3*(M*1.0e-8)**(3./4.)*(Mdot**(-0.25)) # pc 
 pcto_10to16cm = 0.003241
@@ -105,19 +105,24 @@ y_obsb = yb/(1.0-velx/c)
 z_obsb = zb/(1.0-velx/c)
 
 phi_y_obsb = y_obsb/d * 180.0/np.pi * 3600.0 # arcsec
-phi_z_obsb = z_obsb/d * 180.0/np.pi * 3600.0 # arcsec 
+phi_z_obsb = z_obsb/d * 180.0/np.pi * 3600.0 # arcsec
+
+phi_y_obsb *= 1.0e3 # mas
+phi_z_obsb *= 1.0e3 # mas 
+phi_y_obs *= 1.0e3 # mas
+phi_z_obs *= 1.0e3 # mas 
 
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
 #ax.set_ylim(-0.01,0.01)
 if case==1:
-    ax.set_ylim(-0.1,0.1)
+    ax.set_ylim(-50.0,50.0)
     #ax.set_xlim(-0.01,0.01)
 ax.plot(phi_z_obs,phi_y_obs,c='k',lw=1,rasterized=True)
 if case!=1: 
     ax.plot(phi_z_obsb,phi_y_obsb,c='k',lw=1,rasterized=True)
-ax.set_xlabel('arcsec',labelpad=15)
-ax.set_ylabel('arcsec',labelpad=15)
+ax.set_xlabel('mas',labelpad=15)
+ax.set_ylabel('mas')
 
 if case==7:
 
@@ -169,5 +174,5 @@ if case==7:
 if save_pdf: 
     plt.savefig(output_filename+'.pdf',bbox_inches='tight')
 
-plt.show()
+#plt.show()
 
