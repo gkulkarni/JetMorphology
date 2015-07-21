@@ -11,11 +11,11 @@ from matplotlib import cm
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 #psi = 20.0 # degrees
-i = 40.0 # degrees
+i = 30.0 # degrees
 beta = 0.9 # jet speed in units of c 
 d = 100.0 # Mpc; Distance between jet and observer
 
-M = 1.0e8 # Msun; total mass of the equal-mass binary
+M = 1.0e10 # Msun; total mass of the equal-mass binary
 Mdot = 1.0 # Eddington units
 #a0 = 3.241e-3*(M*1.0e-8)**(3./4.) # pc
 a0 = 8.3e-3*(M*1.0e-8)**(3./4.)*(Mdot**(-0.25)) # pc 
