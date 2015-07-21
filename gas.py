@@ -1,3 +1,10 @@
+"""
+File: gas.py 
+
+Evolution of a BH binary in the gas-dominated phase.
+
+"""
+
 import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
@@ -50,8 +57,6 @@ if debug:
         print t[i], a_gas[i], P[i]
         i += 1
 
-# Plot showing evolution of a_gas.
-    
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
 ax.tick_params('both', which='major', length=7, width=1)
@@ -65,8 +70,6 @@ ax.set_xlabel('$t$ [yr]')
 ax.set_ylabel('$a$ [pc]')
 plt.savefig("a_gas.pdf",bbox_inches='tight')
 
-# Plot showing evolution of v_orb.
-
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
 ax.tick_params('both', which='major', length=7, width=1)
@@ -78,9 +81,6 @@ ax.set_xlim(1.0e4,1.0e8)
 ax.set_xlabel('$t$ [yr]',labelpad=15) 
 ax.set_ylabel('$v_\mathrm{orbital}$ [km$/$s]')
 plt.savefig("v_orb_gas.pdf",bbox_inches='tight')
-
-# Plot showing evolution of the intrinsic half-opening angle of the
-# conical jet
 
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)

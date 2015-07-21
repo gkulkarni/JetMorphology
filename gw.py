@@ -1,7 +1,7 @@
 """
 File: gw.py 
 
-Produces Figure 3.
+Evolution of a BH binary in the GW-dominated phase (Figure 3).
 
 """
 
@@ -252,4 +252,4 @@ elif case == 5:
     
     plt.savefig("evolve.pdf",bbox_inches='tight')
     
-#plt.show()
+plt.show()
