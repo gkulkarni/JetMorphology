@@ -1,20 +1,6 @@
 \documentclass[a4paper,fleqn,usenatbib]{mnras}
-
-% MNRAS is set in Times font. If you don't have this installed (most LaTeX
-% installations will be fine) or prefer the old Computer Modern fonts, comment
-% out the following line
-%% \usepackage{newtxtext,newtxmath} 
-
-% Depending on your LaTeX fonts installation, you might get better results with one of these:
-%% \usepackage{mathptmx}
-%% \usepackage{txfonts}
-
-% Use vector fonts, so it zooms properly in on-screen viewing software
-% Don't change these lines unless you know what you are doing
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
-
-%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
 
 \usepackage{graphicx}	
 \usepackage{amsmath}	
@@ -22,25 +8,12 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,decorations.pathmorphing}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
-
-% Please keep new commands to a minimum, and use \newcommand not \def to avoid
-% overwriting existing commands. Example:
-%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
-
 \title[Chirping Jets from Black Hole Binaries]{Radio Crickets:
   Chirping Jets from Black Hole Binaries Entering their Gravitational
   Wave Inspiral}
 
 \author[Kulkarni and Loeb]{
-Girish Kulkarni,$^{1}$\thanks{E-mail: kulkarni@ast.cam.ac.uk}
+Girish Kulkarni$^{1}$\thanks{E-mail: kulkarni@ast.cam.ac.uk}
 and Abraham Loeb$^{2}$\thanks{E-mail: aloeb@cfa.harvard.edu}
 \\
 $^{1}$Institute of Astronomy and Kavli
@@ -50,19 +23,15 @@ $^{2}$Institute for Theory \& Computation,
   Harvard University, 60 Garden Street, Cambridge, MA 02138, USA\\ 
 }
 
-% These dates will be filled out by the publisher
 \date{Accepted ---. Received ---; in original form ---}
 
-% Enter the current year, for the copyright statements etc.
 \pubyear{2015}
 
-% Don't change these lines
 \begin{document}
 \label{firstpage}
 \pagerange{\pageref{firstpage}--\pageref{lastpage}}
 \maketitle
 
-% Abstract of the paper
 \begin{abstract}
   We study a novel electromagnetic signature of supermassive black
   hole binaries whose inspiral stars being dominated by gravitational
@@ -83,15 +52,9 @@ $^{2}$Institute for Theory \& Computation,
   increase the potential usefulness of this technique.
 \end{abstract}
 
-% Select between one and six entries from the list of approved keywords.
-% Don't make up new ones.
 \begin{keywords}
 keyword1 -- keyword2 -- keyword3
 \end{keywords}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
 \label{sec:intro}
@@ -111,7 +74,6 @@ binary's evolution, emission of gravitational waves (GWs) becomes the
 predominant mode angular momentum loss, which results in the
 coalescence of the black holes.
 
-% Any more references to add here?
 General relativisitic (GR) numerical simulations can predict the
 binary's evolution in its final stage up to coalescence
 \citep{2005PhRvL..95l1101P, 2006PhRvL..96k1102B, 2006PhRvL..96k1101C}.
@@ -134,7 +96,6 @@ viscous dissipation of gravitational waves
 \citep{2008PhRvL.101d1101K}, and prompt tidal disruption of stars by
 the recoiled remnant \citep{2011MNRAS.412...75S}.
 
-% Replace `LISA' with `eLISA` or `NGO'?  Mention pulsar timing arrays?
 In addition to testing GR in the strong field limit, observations of
 electromagnetic counterparts will help localize sources of GWs for
 future detectors such as the Evolved Laser Interferometer Space
@@ -179,8 +140,6 @@ The orbital period is
 \begin{equation}
   P = 2\pi\left(\frac{GM}{a^3}\right)^{-1/2}\!\!\!\! = 1.72\, \mathrm{yr}\, a_{16}^{3/2} M_8^{-1/2}.
 \end{equation}
-% Mention typical size of accretion disks and typical ISCO radius
-% above?
 
 \begin{figure}
   \begin{center}
@@ -384,7 +343,9 @@ in the gas and GW-dominated phase.
 \begin{figure*}
 \begin{center}
   \begin{tabular}{cc}
+    % jet3d_check2.py (case 0) 
     \includegraphics*[scale=0.45]{{jet_i40_beta0.90_mdot1.00_full}.pdf} &
+    % jet3d_image_fulljet.py (case 1) 
     \includegraphics*[scale=0.45]{jet_check_zoom1.pdf}
   \end{tabular}
 \end{center}
@@ -450,16 +411,15 @@ that $S_r$ decreases with time according to a simple power law
 \begin{equation}
   S_r\propto t^{-\delta}.
 \end{equation}
-We assume $\delta=1$ and $\alpha=1$, hereafter. 
-% Need to justify parameter values.
-% Comment on relativistic corrections
+We assume $\delta=1$ and $\alpha=1$, hereafter
+\citep{1982ApJ...262..478G}.
 
 \section{Flagging GW binaries and probing GR}
 
 As the binary evolves, its increasing orbital period and speed, and
 the apparant superluminal motion effect, together result in a jet
 morphology with an increasing opening angle and increasingly rapid
-periodic variation together with a twisted shape.
+periodic variation, together with a twisted shape.
 Figure~\ref{fig:jet_mdot1.0} shows these three features for an
 equal-mass binary with total mass $M=10^{10}$~M$_\odot$.  For
 concreteness, we have assumed $i=40^\circ$ and $\beta=0.9$.  The
@@ -470,9 +430,26 @@ superluminal motion.  The right panel of Figure~\ref{fig:jet_mdot1.0}
 zooms into the inner region of the forward jet and shows that the
 binary creates wiggles in the jet morphology of the order of a
 milli-arcsecond.  The duration of the binary evolution captured by
-Figure~\ref{fig:jet_mdot1.0} is 100 yr.
+Figure~\ref{fig:jet_mdot1.0} is 100 yr.  Although the system can be
+rescaled to different masses, times, and separation, the initial
+separation in Figure~\ref{fig:jet_mdot1.0} is $\sim 10^{-3}$~pc, when
+the binary enters it GW-dominated phase.  
 
-% Add discussion about the chirp of the signal 
+The increasing orbital speed of the binary leads to an increase in the
+jet's precession angular velocity.  This increases the helicity of the
+jet such that the jet is wound up increasingly tightly closer to the
+source.  This gives rise to a ``chirping'' morphology as seen in
+Figure~\ref{fig:jet_mdot1.0}.  The chirp is easier to resolve in jets
+that are closer to the line of sight, where superluminal motion can
+magnify the forward jet.  A chirping black hole is an unambiguous
+signature of a rapidly evolving binary BH; the chirp is direct
+reflection of the orbital velocity evolution in
+Figure~\ref{fig:evolve}.  Together, the three features of the jet
+morphology in Figure~\ref{fig:jet_mdot1.0}, viz., conical jet geometry
+with an increasing opening angle, a radio chirp geometry, and an
+asymmetrical shape, directly probe the dynamics of the binary in its
+GW phase. Observations of this milliarcsecond geometry can thus
+constrain GR in the strong field limit.
 
 \begin{table}
 \begin{center}
@@ -511,7 +488,6 @@ into a peculiar morphology.  The jet geometry can be used to infer the
 set of dynamical and geometrical parameters, listed in
 Table~\ref{table:params}.
 
-% Give redshift numbers
 These milli-arcsecond features can be resolved using long baseline
 radio interferometry \citep{2001ChJAA...1..236Q}.  At higher
 redshifts, jets are fainter and the wiggles become more difficult to
@@ -526,7 +502,7 @@ gravitational wave sources.  BH binaries are expected to be the
 brightest GW sources in the universe.  Current ground based GW
 detectors such as LIGO are sensitive to low-mass BH binaries at high
 redshift, which would be difficult to detect with this method.
-However, future detectors such as eLISA are sensitvie to GW emission
+However, future detectors such as eLISA are sensitive to GW emission
 from $10^7$--$10^9$ M$_\odot$ BHs \citep{2013CQGra..30x4009S}.  Pulsar
 Timing Arrays are sensitive to even higher binary masses.  Monitoring
 of jet morphologies with features outlined in this paper will put a
@@ -536,8 +512,10 @@ compact binary mergers should enable detailed studies of astrophysical
 processes in the strong-field gravity regime
 \citep{2005ApJ...629...15H}.
 
-% Mention old observations which show similar features
-% There is a todo in a PS email from Avi 
+We make the code implementing the model presented in this Letter
+available at \url{https://github.com/gkulkarni/JetMorphology} under
+the MIT open source software license.  This code can be used to
+explore the parameter space of the model. 
 
 \section*{Acknowledgments}
 
@@ -546,10 +524,9 @@ Rorai.  This work was supported in part by NSF grant AST-1312034 (for
 A.~L.).
 
 \bibliographystyle{mnras}
-\bibliography{refs} % if your bibtex file is called example.bib
+\bibliography{refs} 
 
-% Don't change these lines
-\bsp	% typesetting comment
+\bsp
 \label{lastpage}
 \end{document}
 
