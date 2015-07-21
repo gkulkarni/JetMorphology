@@ -1,3 +1,10 @@
+"""
+File: gw.py 
+
+Produces Figure 3.
+
+"""
+
 import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
@@ -32,12 +39,6 @@ t_merge=coeff*a0**4/4.0
 print 'coeff=', coeff
 print 't_merge=', t_merge
 print 'log(t_merge)=', np.log10(-t_merge)
-
-# t1 = np.logspace(-2.0,4.80617,num=100)
-# a1 = binary_separation_gw(t1) 
-
-# t2 = np.logspace(4.80617,4.80619,num=300)
-# a2 = binary_separation_gw(t2) 
 
 t1 = np.logspace(-2.0,3.8,num=100)
 a1 = binary_separation_gw(t1) 
@@ -79,7 +80,6 @@ def binary_orbital_period(a_16):
 
 P = binary_orbital_period(a)
 
-
 debug = False
 if debug: 
     data = np.vstack((t,a_gas))
@@ -89,10 +89,9 @@ if debug:
         i += 1
 
 case = 5
+
 if case == 0: 
         
-    # Plot showing evolution of a.
-
     fig = plt.figure(figsize=(7, 7), dpi=100)
     ax = fig.add_subplot(1, 1, 1)
     ax.tick_params('both', which='major', length=7, width=1)
@@ -105,9 +104,6 @@ if case == 0:
     ax.set_xlabel('$t$ [yr]',labelpad=15) 
     ax.set_ylabel('$a$ [pc]')
     plt.savefig("a_gw.pdf",bbox_inches='tight')
-    #plt.show()
-
-    # Plot showing evolution of a_gas.
 
     fig = plt.figure(figsize=(7, 7), dpi=100)
     ax = fig.add_subplot(1, 1, 1)
@@ -118,8 +114,6 @@ if case == 0:
     ax.plot(t,a_gas)
     ax.set_xlabel('$t$ [yr]') 
     ax.set_ylabel('$a$ [10^{16} cm]')
-
-    # Plot showing evolution of v_orb.
 
     fig = plt.figure(figsize=(7, 7), dpi=100)
     ax = fig.add_subplot(1, 1, 1)
@@ -133,9 +127,6 @@ if case == 0:
     ax.set_ylabel('$v_\mathrm{orbital}$ [km$/$s]')
     plt.savefig("v_orb.pdf",bbox_inches='tight')
 
-    # Plot showing evolution of the intrinsic half-opening angle of the
-    # conical jet
-
     fig = plt.figure(figsize=(7, 7), dpi=100)
     ax = fig.add_subplot(1, 1, 1)
     ax.tick_params('both', which='major', length=7, width=1)
@@ -147,15 +138,11 @@ if case == 0:
     ax.set_ylabel(r'$\psi_\mathrm{intrinsic}$ [degrees]')
     plt.savefig("psi.pdf",bbox_inches='tight')
 
-    # Plot showing evolution of the observed half-opening angle of the
-    # conical jet
-
     fig = plt.figure(figsize=(7, 7), dpi=100)
     ax = fig.add_subplot(1, 1, 1)
     ax.tick_params('both', which='major', length=7, width=1)
     ax.tick_params('both', which='minor', length=3, width=1)
     ax.set_xscale('log')
-    #ax.set_yscale('log')
     ax.plot(t,psi_observed)
     ax.set_xlabel('$t$ [yr]') 
     ax.set_ylabel(r'$\psi$')
@@ -202,7 +189,6 @@ elif case == 3:
     ax.tick_params('both', which='major', length=7, width=1)
     ax.tick_params('both', which='minor', length=3, width=1)
     ax.set_xscale('log')
-    #ax.set_yscale('log')
     ax.plot(t,psi,c='k',lw=1)
 
     psi0 = 20.0*np.pi/180.0 # radians 
@@ -222,7 +208,6 @@ elif case == 4:
     ax.set_yscale('log')
     a *= 0.003241 
     ax.plot(t,a,c='k',lw=2)
-    #ax.set_xlim(1.0e1,1.0e7)
     ax.set_xlabel('$t$ [yr]',labelpad=15) 
     ax.set_ylabel('$a$ [pc]')
 
