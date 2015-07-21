@@ -42,8 +42,6 @@ def half_opening_angle_observed(psi):
     inclination = 15.0*np.pi/180.0
     return psi/np.sin(inclination)
 
-#psi_observed = half_opening_angle_observed(psi)
-
 debug = True
 if debug: 
     data = np.vstack((t,a_gas))
@@ -94,6 +92,5 @@ ax.set_xlim(1.0e4,1.0e8)
 ax.set_xlabel('$t$ [yr]',labelpad=15) 
 ax.set_ylabel(r'$\psi_\mathrm{intrinsic}$ [degrees]')
 plt.savefig("psi_gas.pdf",bbox_inches='tight')
-
 
 plt.show()
