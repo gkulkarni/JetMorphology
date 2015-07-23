@@ -1,3 +1,12 @@
+"""
+
+File: jet.py 
+
+Jet morphology from a BH binary that is in the GW-dominated phase of
+its inspiral.  Case 0 gives Figure 5 (left panel).
+
+"""
+
 import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'

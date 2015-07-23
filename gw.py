@@ -1,7 +1,7 @@
 """
 File: gw.py 
 
-Evolution of a BH binary in the GW-dominated phase (Figure 3).
+Evolution of a BH binary in the GW-dominated phase (Case 5 gives Figure 3).
 
 """
 

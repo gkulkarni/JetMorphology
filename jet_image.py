@@ -1,9 +1,10 @@
 """
 
-File: jet.py 
+File: jet_image.py 
 
 Jet morphology from a BH binary that is in the GW-dominated phase of
-its inspiral (Figures 4). 
+its inspiral.  This code uses a jet brightness model to produce an
+image of the jet on the sky.  Case 1 gives Figure 5 (right panel).
 
 """
 
