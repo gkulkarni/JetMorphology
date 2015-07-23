@@ -62,7 +62,7 @@ def orbital_speed(a_16):
 v = orbital_speed(a) 
 
 def half_opening_angle_intrinsic(a_16):
-    psi = np.arcsin(np.sin(psi0)*a0/a_16)
+    psi = np.arcsin(np.sin(psi0)*np.sqrt(a0/a_16))
     return psi*180.0/np.pi
 
 psi0 = 2.0*np.pi/180.0 # radians 
