@@ -19,7 +19,7 @@ import sys
 from matplotlib import cm
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-i = 30.0 # degrees
+i = 40.0 # degrees
 i *= np.pi/180.0 # radians 
 beta = 0.9 # jet speed in units of c 
 d = 100.0 # Mpc; Angular distance between jet and observer
@@ -32,7 +32,7 @@ pcto_10to16cm = 0.003241
 a0 /= pcto_10to16cm # 1.0e16 cm
 coeff = -2.56e5/(M*1.0e-8)**3 
 
-output_filename = 'jet_i%2d_beta%3.2f_mdot%3.2f_image' % (i, beta, Mdot)
+output_filename = 'jet_i%2d_beta%3.2f_mdot%3.2f_image' % (i*180.0/np.pi, beta, Mdot)
 save_pdf = True
 
 # case = 1, 2 zooms into the central region of the jet 
@@ -56,7 +56,7 @@ def half_opening_angle_intrinsic(a_16):
     return angle #*180.0/np.pi # degrees 
 
 if case == 0: 
-    t = np.logspace(-1.0,1.0,10000000)
+    t = np.logspace(-2.0,2.0,10000000)
     output_filename += '_full'
 elif case == 1:
     t = np.logspace(-2.0,2.0,10000000)
