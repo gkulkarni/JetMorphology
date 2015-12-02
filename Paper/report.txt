@@ -17,18 +17,28 @@
 > 
 > Page 2, Line 30: in this Letter -> in this paper (I understand the
 > paper in its present form surpasses the page limit for letters)
-> 
+
+Done.
+
 > Line 31: doiminated -> dominated
-> 
+
+Done.
+
 > Page 6, paragraph 2, lines 42-43: have large orbital periods that will
 > results is a helix -> have large orbital periods that will result in a
 > helix
-> 
+
+Done.
+
 > Page 7, below Eq 23.: which can be fit to -> which can be fitted to
-> 
+
+Done.
+
 > Last paragraph of Section 4: in this Letter -> in this paper. Same in
 > the next sentence.
-> 
+
+Done.
+
 > The paper can be published in Monthly Notices of the Royal
 > Astronomical Society after these minor issues are addressed.
 
