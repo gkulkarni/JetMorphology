@@ -1,3 +1,9 @@
+We thank the referee for helpful comments on the manuscript.  We have
+now made changes to the text according to the referee's suggestions
+and also addressed his/her two main concerns.  Our responses to the
+referee's comments and a description of the changes in the manuscript
+are below.
+
 > In this Letter, the authors lay out a simple model for the
 > precession of a jet attached to a black hole which is orbiting a
 > companion black hole. That the binary orbital motion causes jet
@@ -50,7 +56,33 @@
 > phase is not new either, at least the Kun et al 2015 paper mentions
 > this. In short: the authors must more thoroughly check what other
 > work has been done on this model.
-> 
+
+We realise that the contrast between our work and that by others was
+not emphasised enough in the previous version of our paper.  This was
+partly an oversight, and we thank the referee for raising this
+important point.  To address it, we have now added text in Section 1
+(Introducton) of our paper describing previous work on jet precession
+and contrasting our model with previous ones.
+
+The essential idea is that when BH mass is large enough and the BH
+binary separation is small enough the time scale over which the binary
+evolves is approximately equal to its orbital period.  When this
+happens, it becomes impotant to understand the deviations of the jet
+morphology from a simple biconical helix.  This is what we attempt to
+do in our paper.
+
+In Section 4.1 of the revised manuscript, we mention the quasar 4C
+18.68, which is reported to have a helical jet morphology which cannot
+be fit by a single biconical helix.  The jet in 4C 18.68 prefers a jet
+with a widening opening angle, exactly of the kind we discuss in our
+paper.  The morphology of such jets has not been discussed previously
+in the literature.  We also feel that it is topical to do so given new
+understanding of gas accretion in the GW phase of BH binary evolution.
+
+In Section 4.2 of the revised manuscript, we also discuss how our
+chirpy jet morphology could be distinguished from the usual wobbly
+jets.  
+
 > (2) I think the paper needs to make a much more serious attempt to
 > describe how something like Fig.5 can be observed -- quoting the
 > sensitivities and angular resolutions of specific instruments,
@@ -67,7 +99,35 @@
 > mass asymmetry parameter. Something should be stated about the
 > meaning of each parameter in Table 1 and how it affects the jet
 > morphology. 
-> 
+
+We agree with the referee that this is an important point.  In our
+revised manuscript, we now discuss this in detail in Sections 4.1 and
+4.2.  Section 4.1 lists angular resolution achievable by current and
+upcoming instruments.  It argues that the jet morphology discussed in
+this paper should be measurable by these instruments.  In Section 4.2,
+we present a detailed algorithm to measure dynamical parameters for an
+equal-mass binary BH from the observation of a chirpy jet.
+
+Further, with this reply, we also attach a figure to show how the
+geometric model in Section 4.2 works in practice, by fitting it to a
+mock data using MCMC.  The MCMC procedure has an added benefit: it
+shows that there are no degeneracies in the seven-parameter geometric
+model.  The figure shows marginalised posterior distributions of the
+parameters of our 7-parameter model when it is fit to mock data.
+(These mock data are from the model and then smoothing the resultant
+jet morphology, in this case, by ~ 2 mas.)  Wide, uniform priors were
+chosen for all parameters.  The posteriors clearly show that there is
+no degeneracy in the geometric model.  In fact, the very narrow ranges
+of values for which the posteriors are non-zero for each parameter
+show that the model fits the mock data very well.  
+
+A second figure attached with this reply shows the jet morphology of
+Figure 4 of the paper when smoothed with a 2 mas Gaussian PSF.  The
+intensity on this plot is cumulative and the axes show pixel numbers.
+The plot shows that it should be possible to see such jets at 2 mas
+resolution.  In the paper, we also highlight the case of 4C 18.68, as
+mentioned above.
+
 > Other Issues:
 > 
 > - I am not sure why the authors cite Bode & Phinney (2007) on the
@@ -75,7 +135,9 @@
 >   conference abstract with no information. Instead they should cite
 >   Lippai, Frei, Haiman (2008, ApJL), which was the first paper
 >   discussing such shocks.
-> 
+
+We have now added this reference.  
+
 > - ... "quasi periodic variability in accretion during the early
 >   stages of merger" ... should also cite D’Orazio+ 2013, Farris+
 >   2014, Shi+2015 which measure accretion variability in this regime
@@ -83,27 +145,40 @@
 >   the introduction: D’Orazio et al 2013 was the first to explicitly
 >   show that accretion in the binary cavity is not suppressed
 >   relative to a single BH with the same mass.
-> 
+
+We have now added these references.
+
 > - Loeb 2010 is cited for Eq. (1), which is a trivial result from the
 >   two body problem. This citation should be removed from this
 >   instance.
-> 
+
+We have now removed this citation. 
+
 > - Below Eq. (2) for the concept of the cavity, with size ~ twice the
 >   binary orbital separation, the authors should cite Artymowicz &
 >   Lubow's 1994 paper, the idea did not start with Milos+Phinney.
-> 
+
+We have now added this reference. 
+
 > - For Eq.(3), and for the idea of tying the orbital decay to dM/dt,
 >   the authors should mention the new work by Dotti, M., Merloni, A.,
 >   Montouri, C. 2015.
-> 
+
+We have now added this reference. 
+
 > - Fig.3 is not informative, and could easily be deleted.
-> 
+
+We had included this figure for pedagogical reasons, but have now removed it.  
+
 > - Equation (7) for the opening angle of the jet is valid in the
 >   limit that v_jet ~c >> v_{orb}. This should be emphasized as the
 >   condition does break down near merger. Additionally v_orb becomes
 >   increasingly inaccurate near merger because general relativistic
 >   corrections are ignored.
-> 
+
+We had mentioned the first of these points in the caption to Figure 2.
+But now we also emphasise both points in the discussion of Equation (7). 
+
 > - As cited, the jet model is taken from Gower et al 1982. I have a
 >   question on the implementation of Gower’s model: The time
 >   evolution of the flux density emitted from the jet plasma is
@@ -119,14 +194,34 @@
 >   clarity to specify that the time dependence is not due to the
 >   source of the jet decreasing in output power, but rather, that the
 >   flux density from the ejected jet plasma is decreasing.
-> 
+
+We are using S_r \protpto \tau^{-1} and have now corrected the typo in
+Equation (17).  We thank the referee for pointing this out and
+apologise for the error. 
+
 > - I find Fig. 5 confusing. Does the left panel show the position of
 >   a single jet particle over time? Or the positions of many
 >   particles observed at some fixed instant on Earth? Similarly, does
 >   the right panel compute the cumulative brightness at each point,
 >   at a fixed time, summing over all jet particles? This should be
 >   more clearly explained.
-> 
+
+Figure 5 is now Figure 4.
+
+The left panel of this figure shows the position of many particles
+observed at a fixed time on Earth.  This partly explains the apparant
+change in the jet precession axis in the forward jet: the binary has
+evolved between when the outmost particles on this plot were eject and
+when the innermost ones were ejected.
+
+Likewise, the right panel of the figure shows the intensity of many
+particles at a fixed time on Earth.  Particles that were ejected
+earliest have minimum intensity.  The intensity in what is now Figure
+5 is cumulative brightness at each point (calculated by assuming that
+each jet particle is optically thin).
+
+We have now clarified this in the figure's caption.
+
 > - On page five, the end of the second to last paragraph in Section
 >   4, three features of the jet morphology are stated to directly
 >   probe the dynamics of the binary (1) conical jet with increasing
@@ -136,7 +231,12 @@
 >   de-magnification from relativistic beaming? This is again related
 >   to a need for this work to discuss observability of the predicted
 >   jet morphology.
-> 
+
+We have now clarified this terminology.  By "asymmetric shape", we
+meant an apparant variation in the jet precession axis towards the
+central source. (This is what we referred to as the "twist" in the jet
+morphology in other parts of the manuscript.)
+
 > - Precession of the jet can also be caused by general relativistic
 >   effects or e.g. torquing of an accretion disk of the jetted BH by
 >   the companion.  For example, post-Newtonian corrections to the
@@ -148,21 +248,44 @@
 >   at a separation of 2M. This could cause secular changes in the jet
 >   morphology - could the authors comment on whether this will affect
 >   the current conclusions?
-> 
+
+At these separations we would still have t_relativistic_precession <
+t_GW < t_orb.  So the three morphological featurs discussed in our
+paper would likely persist but there were be an additional component
+to the opening angle \psi.  This enhancement in the opening angle will
+also result in an enhancement in the spacing between different cycles
+of the jet because of enhanced apparant superluminal velocity effect.
+We have now highlighted in the text that we have ignored this effect
+in our model.  We thank the referee for raising this point. 
+
 > - I believe Farris et al. 2015 is cited twice throughout the paper,
 >   but two different papers are meant, one tracks thermal emission
 >   (cited in the introduction), and one tracks gravitational wave
 >   inspiral of the binary (cited on page 3).
-> 
+
+Farris et al. 2015 have considered both these effects.  We have now
+also cited two previous papers by Farris et al. on accretion in BH
+binaries elsewhere in the text.
+
 > Minor points:
 > 
 > Precession is spelled as precision in the first sentence of Figure 2
 > (check that this is not the case elsewhere)
-> 
+
+Done. Thanks. 
+
 > Also in the first sentence of Figure 2 ‘v_{orbital}’ is used for the
 > orbital velocity where as elsewhere in the paper v_{orb} is used.
-> 
+
+Done.
+
 > The term twisted, used to refer to the jet morphology is vague, In
 > which manner is the jet twisted? Do the authors mean that the axis
 > of the jet cone is repositioned relative to the line of sight? The
 > term is fine as lone as it is stated what is twisted.
+
+By "twist" we mean an apparant variation in the jet precession axis
+towards the central source.  We have now clarified this in Section 4.
+
+
+
