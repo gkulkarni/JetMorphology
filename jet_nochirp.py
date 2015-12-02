@@ -9,7 +9,7 @@ import math
 import sys
 
 psi = 2.0 # degrees
-i = 40.0 # degrees
+i = 20.0 # degrees
 theta = 0.0 # degrees
 beta = 0.90 # jet speed in units of c 
 d = 100.0 # Mpc; Distance between jet and observer
@@ -20,7 +20,7 @@ output_filename = 'jet_i%2d_psi%2d_beta_%3.2f' % (i, psi, beta)
 save_pdf = False
 
 psi *= np.pi/180.0 # radians 
-i *= np.pi/180.0 # radians 
+i *= np.pi/180.0 # r]adians 
 theta *= np.pi/180.0 # radians
 
 c = 3.0e5 # km/s; speed of light
@@ -79,12 +79,10 @@ phi_z_obsb = z_obsb/d * 180.0/np.pi * 3600.0 # arcsec
 phi_y_obs *= 1.0e3
 phi_z_obs *= 1.0e3
 
-with open('test.out','w') as f: 
-    for i in xrange(phi_y_obs.size):
-        f.write(str(phi_y_obs[i])+'  '+str(phi_z_obs[i])+'\n')
+# with open('test.out','w') as f: 
+#     for i in xrange(phi_y_obs.size):
+#         f.write(str(phi_y_obs[i])+'  '+str(phi_z_obs[i])+'\n')
 
-sys.exit() 
-        
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
 # ax.set_xlim(-0.04,0.14)

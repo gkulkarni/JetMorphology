@@ -177,7 +177,6 @@ for i in xrange(phi_z.size):
 
 fig = plt.figure(figsize=(5, 5), dpi=100)
 a2 = gf(a, 10.0)
-#a2 = a
 plt.contour(a2,100,colors='k',linestyles='solid')
 
 ylabels = range(int(-60),int(70),20)
@@ -193,7 +192,7 @@ plt.yticks(ylocs, ylabels)
 plt.xticks(zlocs, zlabels)
 plt.xlabel('mas')
 plt.ylabel('mas')
-plt.savefig('jet_2mas.pdf',bbox_inches='tight')
+plt.savefig('jet_100muas.pdf',bbox_inches='tight')
 
 sys.exit() 
 

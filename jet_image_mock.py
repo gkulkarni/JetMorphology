@@ -1,3 +1,13 @@
+"""
+
+File: jet_image.py 
+
+Jet morphology from a BH binary that is in the GW-dominated phase of
+its inspiral.  This code uses a jet brightness model to produce an
+image of the jet on the sky.  Case 1 gives Figure 5 (right panel).
+
+"""
+
 import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
@@ -82,6 +92,7 @@ sign = 1 # forward jet
 norm_sep = False
 
 velx, vely, velz = vel(t)
+v = np.sqrt(velx**2 + vely**2 + velz**2)
 
 y = vely*t*yrbys/kpcbykm # kpc
 z = velz*t*yrbys/kpcbykm # kpc
@@ -96,7 +107,8 @@ alpha = 1.0
 delta = 1.0
 t_observed = t/(1.0-velx/c)
 
-gamma = 1.0/np.sqrt(1.0-beta**2)
+# gamma = 1.0/np.sqrt(1.0-beta**2)
+gamma = 1.0/np.sqrt(1.0-v**2/c**2)
 doppler = gamma*(1.0-beta)
 
 intensity = doppler**(3.0+alpha-delta) * (t_observed**(-delta))
@@ -108,11 +120,12 @@ if norm_sep:
     intensity = np.array([np.log10(x) if x>0.0 else -2.0 for x in intensity])
 
 phi_y_obs *= 1.0e3 # mas
-phi_z_obs *= 1.0e3 # mas 
+phi_z_obs *= 1.0e3 # mas
 
 sign = -1 # backward jet 
 
 velx, vely, velz = vel(t)
+v = np.sqrt(velx**2 + vely**2 + velz**2)
 
 yb = vely*t*yrbys/kpcbykm # kpc
 zb = velz*t*yrbys/kpcbykm # kpc
@@ -130,7 +143,8 @@ alpha = 1.0
 delta = 1.0
 t_observed = t/(1.0-velx/c)
 
-gamma = 1.0/np.sqrt(1.0-beta**2)
+#gamma = 1.0/np.sqrt(1.0-beta**2)
+gamma = 1.0/np.sqrt(1.0-v**2/c**2)
 doppler = gamma*(1.0-beta)
 
 intensity_b = doppler**(3.0+alpha-delta) * (t_observed**(-delta))
@@ -149,54 +163,44 @@ max_intensity = intensity.max()
 intensity /= max_intensity
 intensity = np.array([np.log10(x) if x>0.0 else -2.0 for x in intensity])
 
-nc = 1000
-a = np.zeros((nc,nc),dtype=np.float32) 
-zl = phi_z.min()-5.0
-zu = phi_z.max()+5.0
-yl = phi_y.min()-5.0
-yu = phi_y.max()+5.0
+def mock_data(): 
+    nc = 100
+    a = np.zeros((nc,nc),dtype=np.float32) 
+    zl = -50.0 
+    zu =  50.0 
+    yl = -10.0 
+    yu =  30.0
+    lz = zu - zl 
+    ly = yu - yl 
+    dy = ly/nc
+    dz = lz/nc 
 
-print zl, zu
-print yl, yu 
+    def zloc(x):
+        if (x <= zu) and (x >= zl): 
+            return int((x-zl)/dz)
+        else:
+            return None 
+        
+    def yloc(x):
+        if (x <= yu) and (x >= yl): 
+            return int((x-yl)/dy)
+        else:
+            return None
 
-lz = zu - zl 
-ly = yu - yl 
-dy = ly/nc
-dz = lz/nc
-print dy, dz
-def zloc(x):
-    return int((x-zl)/dz) + 1 
+    for i in xrange(phi_z.size):
+        zpos = zloc(phi_z[i]) 
+        ypos = yloc(phi_y[i])
+        if zpos and ypos: 
+            a[ypos, zpos] += 1.0
 
-def yloc(x):
-    return int((x-yl)/dy) + 1 
+    #a2 = gf(a, 1.0)
+    a2 = a
+    plt.imshow(a2, cmap=cm.Blues) 
+    plt.show()
 
-for i in xrange(phi_z.size):
-    zpos = zloc(phi_z[i]) 
-    ypos = yloc(phi_y[i])
-    a[ypos, zpos] += abs(intensity[i])*100000.0
-
-fig = plt.figure(figsize=(5, 5), dpi=100)
-a2 = gf(a, 10.0)
-#a2 = a
-plt.contour(a2,100,colors='k',linestyles='solid')
-
-ylabels = range(int(-60),int(70),20)
-ylocs = [yloc(x) for x in ylabels]
-ylabels = ['$'+str(x).strip()+'$' for x in ylabels]
-
-zlabels = range(int(-20),int(50),20)
-zlocs = [zloc(x) for x in zlabels]
-zlabels = ['$'+str(x).strip()+'$' for x in zlabels]
-
-#plt.imshow(a2, cmap=cm.Greys)
-plt.yticks(ylocs, ylabels)
-plt.xticks(zlocs, zlabels)
-plt.xlabel('mas')
-plt.ylabel('mas')
-plt.savefig('jet_2mas.pdf',bbox_inches='tight')
-
+mock_data()
 sys.exit() 
-
+    
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
 
@@ -205,7 +209,7 @@ if case==1:
     ax.set_xlim(-10,30)
 
 s=plt.scatter(phi_z,phi_y,s=4,marker='o',edgecolor='none',vmax=0.0,
-              vmin=-2.0,rasterized=True,c=intensity,cmap=cm.Blues)
+              vmin=-2.0,rasterized=True,c=intensity,cmap=cm.RdBu_r)
 
 ax.set_xlabel('mas',labelpad=15)
 ax.set_ylabel('mas',labelpad=15)

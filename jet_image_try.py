@@ -1,3 +1,13 @@
+"""
+
+File: jet_image.py 
+
+Jet morphology from a BH binary that is in the GW-dominated phase of
+its inspiral.  This code uses a jet brightness model to produce an
+image of the jet on the sky.  Case 1 gives Figure 5 (right panel).
+
+"""
+
 import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
@@ -9,7 +19,6 @@ import math
 import sys
 from matplotlib import cm
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from scipy.ndimage.filters import gaussian_filter as gf
 
 i = 40.0 # degrees
 i *= np.pi/180.0 # radians 
@@ -149,53 +158,7 @@ max_intensity = intensity.max()
 intensity /= max_intensity
 intensity = np.array([np.log10(x) if x>0.0 else -2.0 for x in intensity])
 
-nc = 1000
-a = np.zeros((nc,nc),dtype=np.float32) 
-zl = phi_z.min()-5.0
-zu = phi_z.max()+5.0
-yl = phi_y.min()-5.0
-yu = phi_y.max()+5.0
-
-print zl, zu
-print yl, yu 
-
-lz = zu - zl 
-ly = yu - yl 
-dy = ly/nc
-dz = lz/nc
-print dy, dz
-def zloc(x):
-    return int((x-zl)/dz) + 1 
-
-def yloc(x):
-    return int((x-yl)/dy) + 1 
-
-for i in xrange(phi_z.size):
-    zpos = zloc(phi_z[i]) 
-    ypos = yloc(phi_y[i])
-    a[ypos, zpos] += abs(intensity[i])*100000.0
-
-fig = plt.figure(figsize=(5, 5), dpi=100)
-a2 = gf(a, 10.0)
-#a2 = a
-plt.contour(a2,100,colors='k',linestyles='solid')
-
-ylabels = range(int(-60),int(70),20)
-ylocs = [yloc(x) for x in ylabels]
-ylabels = ['$'+str(x).strip()+'$' for x in ylabels]
-
-zlabels = range(int(-20),int(50),20)
-zlocs = [zloc(x) for x in zlabels]
-zlabels = ['$'+str(x).strip()+'$' for x in zlabels]
-
-#plt.imshow(a2, cmap=cm.Greys)
-plt.yticks(ylocs, ylabels)
-plt.xticks(zlocs, zlabels)
-plt.xlabel('mas')
-plt.ylabel('mas')
-plt.savefig('jet_2mas.pdf',bbox_inches='tight')
-
-sys.exit() 
+vx = np.concatenate([-velx, velx])
 
 fig = plt.figure(figsize=(7, 7), dpi=100)
 ax = fig.add_subplot(1, 1, 1)
@@ -204,8 +167,7 @@ if case==1:
     ax.set_ylim(-50,50)
     ax.set_xlim(-10,30)
 
-s=plt.scatter(phi_z,phi_y,s=4,marker='o',edgecolor='none',vmax=0.0,
-              vmin=-2.0,rasterized=True,c=intensity,cmap=cm.Blues)
+s=plt.scatter(phi_z,phi_y,s=4,marker='o',edgecolor='none',rasterized=True,c=vx,cmap=cm.RdBu_r)
 
 ax.set_xlabel('mas',labelpad=15)
 ax.set_ylabel('mas',labelpad=15)

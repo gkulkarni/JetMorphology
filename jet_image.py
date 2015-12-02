@@ -91,6 +91,7 @@ sign = 1 # forward jet
 norm_sep = False
 
 velx, vely, velz = vel(t)
+v = np.sqrt(velx**2 + vely**2 + velz**2)
 
 y = vely*t*yrbys/kpcbykm # kpc
 z = velz*t*yrbys/kpcbykm # kpc
@@ -105,7 +106,8 @@ alpha = 1.0
 delta = 1.0
 t_observed = t/(1.0-velx/c)
 
-gamma = 1.0/np.sqrt(1.0-beta**2)
+# gamma = 1.0/np.sqrt(1.0-beta**2)
+gamma = 1.0/np.sqrt(1.0-v**2/c**2)
 doppler = gamma*(1.0-beta)
 
 intensity = doppler**(3.0+alpha-delta) * (t_observed**(-delta))
@@ -117,11 +119,12 @@ if norm_sep:
     intensity = np.array([np.log10(x) if x>0.0 else -2.0 for x in intensity])
 
 phi_y_obs *= 1.0e3 # mas
-phi_z_obs *= 1.0e3 # mas 
+phi_z_obs *= 1.0e3 # mas
 
 sign = -1 # backward jet 
 
 velx, vely, velz = vel(t)
+v = np.sqrt(velx**2 + vely**2 + velz**2)
 
 yb = vely*t*yrbys/kpcbykm # kpc
 zb = velz*t*yrbys/kpcbykm # kpc
@@ -139,7 +142,8 @@ alpha = 1.0
 delta = 1.0
 t_observed = t/(1.0-velx/c)
 
-gamma = 1.0/np.sqrt(1.0-beta**2)
+#gamma = 1.0/np.sqrt(1.0-beta**2)
+gamma = 1.0/np.sqrt(1.0-v**2/c**2)
 doppler = gamma*(1.0-beta)
 
 intensity_b = doppler**(3.0+alpha-delta) * (t_observed**(-delta))
