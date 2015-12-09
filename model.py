@@ -147,7 +147,7 @@ phi_y = np.concatenate([phi_y_obsb, phi_y_obs])
 intensity = np.concatenate([intensity_b, intensity])
 max_intensity = intensity.max()
 intensity /= max_intensity
-intensity = np.array([np.log10(x) if x>0.0 else -2.0 for x in intensity])
+#intensity = np.array([np.log10(x) if x>0.0 else -2.0 for x in intensity])
 
 nc = 1000
 a = np.zeros((nc,nc),dtype=np.float32) 
@@ -155,6 +155,9 @@ zl = phi_z.min()-5.0
 zu = phi_z.max()+5.0
 yl = phi_y.min()-5.0
 yu = phi_y.max()+5.0
+
+zl, zu = -10.0, 10.0
+yl, yu = -5.0, 5.0
 
 print zl, zu
 print yl, yu 
@@ -165,34 +168,43 @@ dy = ly/nc
 dz = lz/nc
 print dy, dz
 def zloc(x):
-    return int((x-zl)/dz) + 1 
+    return int((x-zl)/dz)# + 1 
 
 def yloc(x):
-    return int((x-yl)/dy) + 1 
+    return int((x-yl)/dy)# + 1 
 
 for i in xrange(phi_z.size):
+    if phi_z[i] > zu or phi_z[i] < zl: continue
+    if phi_y[i] > yu or phi_y[i] < yl: continue 
     zpos = zloc(phi_z[i]) 
     ypos = yloc(phi_y[i])
-    a[ypos, zpos] += abs(intensity[i])*100000.0
+    a[ypos, zpos] += abs(intensity[i])
 
-fig = plt.figure(figsize=(5, 5), dpi=100)
+fig = plt.figure(figsize=(7,7), dpi=100)
+ax = fig.add_subplot(1, 1, 1)
 a2 = gf(a, 10.0)
-#a2 = a
-plt.contour(a2,100,colors='k',linestyles='solid')
 
-ylabels = range(int(-60),int(70),20)
+ylabels = range(int(yl),int(yu))
 ylocs = [yloc(x) for x in ylabels]
 ylabels = ['$'+str(x).strip()+'$' for x in ylabels]
 
-zlabels = range(int(-20),int(50),20)
+zlabels = range(int(zl),int(zu),3)
 zlocs = [zloc(x) for x in zlabels]
 zlabels = ['$'+str(x).strip()+'$' for x in zlabels]
 
-#plt.imshow(a2, cmap=cm.Greys)
+a2 /= a2.max() 
+s = plt.imshow(a2, cmap=cm.jet)
 plt.yticks(ylocs, ylabels)
 plt.xticks(zlocs, zlabels)
 plt.xlabel('mas')
 plt.ylabel('mas')
+
+divider = make_axes_locatable(ax)
+cax = divider.append_axes("right", "5%", pad="3%")
+cb = plt.colorbar(s, cax=cax)
+cb.set_label('intensity', labelpad=20)
+cb.solids.set_edgecolor("face")
+
 plt.savefig('jet_2mas.pdf',bbox_inches='tight')
 
 sys.exit() 
