@@ -1,3 +1,12 @@
+"""
+
+File: jet3d.py 
+
+Creates mock jet data for fitjet_3d.py.
+
+
+"""
+
 import matplotlib as mpl
 import numpy as np
 import matplotlib.pyplot as plt
@@ -38,11 +47,6 @@ iarr = zvarr/zvarr.max()
 iarr *= np.pi/2.0 
 
 c = np.dstack((xv, yv, zv))
-# d = c*ri(i)*rl(l)
-
-# x = np.squeeze(np.asarray(d[:,0]))
-# y = np.squeeze(np.asarray(d[:,1]))
-
 c = np.squeeze(c)
 d = np.zeros((1000,3))
 lm = rl(l) 
@@ -82,8 +86,9 @@ for i in xrange(xv.size):
 
 a2 = gf(a, 1.0)
 
-#a2.tofile('mockdata_3d_nc100.dat')
-#plt.contour(a2,200,colors='k',linestyles='solid')
+save_data = False 
+if save_data: 
+    a2.tofile('mockdata_3d_nc100.dat') # Save for fitjet_3d.py 
 
 plt.imshow(a2, cmap=cm.Blues) 
 plt.show()

@@ -1,3 +1,11 @@
+"""
+
+File: model.py 
+
+Creates a Gaussian smoothed image of a jet. 
+
+"""
+
 import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True 
 mpl.rcParams['font.family'] = 'serif'
@@ -206,30 +214,4 @@ cb.set_label('intensity', labelpad=20)
 cb.solids.set_edgecolor("face")
 
 plt.savefig('jet_2mas.pdf',bbox_inches='tight')
-
-sys.exit() 
-
-fig = plt.figure(figsize=(7, 7), dpi=100)
-ax = fig.add_subplot(1, 1, 1)
-
-if case==1:
-    ax.set_ylim(-50,50)
-    ax.set_xlim(-10,30)
-
-s=plt.scatter(phi_z,phi_y,s=4,marker='o',edgecolor='none',vmax=0.0,
-              vmin=-2.0,rasterized=True,c=intensity,cmap=cm.Blues)
-
-ax.set_xlabel('mas',labelpad=15)
-ax.set_ylabel('mas',labelpad=15)
-
-divider = make_axes_locatable(ax)
-cax = divider.append_axes("right", "5%", pad="3%")
-cb = plt.colorbar(s, cax=cax)
-cb.set_label('logarithmic intensity', labelpad=20)
-cb.solids.set_edgecolor("face")
-
-if save_pdf: 
-    plt.savefig(output_filename+'.pdf',bbox_inches='tight')
-
-
 

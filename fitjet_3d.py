@@ -1,4 +1,11 @@
-""" Uses image subtraction; otherwise same as fitjet.py """ 
+"""
+
+File: fitjet_3d.py
+
+Fits a geometric model to mock jet data. Uses image subtraction;
+otherwise same as fitjet.py
+
+""" 
 
 import numpy as np
 import matplotlib as mpl
@@ -9,6 +16,7 @@ import emcee
 import triangle
 import sys
 
+# These mock data are produced by jet3d.py.
 a2 = np.fromfile('mockdata_3d_nc100.dat',dtype=np.float32)
 
 def I(theta): 
