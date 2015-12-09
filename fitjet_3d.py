@@ -183,4 +183,4 @@ if plot_chain:
 
 fig = triangle.corner(samples, labels=['$A$', '$B$', '$i_0$', r'$\lambda_0$', r'$\alpha$', r'$\beta$', r'$\gamma$'],
                       truths=result.x)
-fig.savefig("triangle.png")
+fig.savefig("triangle.pdf")

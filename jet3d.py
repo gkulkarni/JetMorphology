@@ -55,7 +55,7 @@ yv = d[1:,1]
 plt.plot(xv, yv)
 plt.show()
 
-sys.exit()
+#sys.exit()
 
 nc = 100                       
 a = np.zeros((nc,nc),dtype=np.float32) 
@@ -64,7 +64,8 @@ zu = xv.max() + 5.0
 yl = yv.min() - 5.0
 yu = yv.max() + 5.0 
 lz = zu - zl 
-ly = yu - yl 
+ly = yu - yl
+print lz, ly
 dz = lz/nc 
 dy = -ly/nc # Because "y" coordinate increases in opposite direction to "y" array index of a (or a2).
 
