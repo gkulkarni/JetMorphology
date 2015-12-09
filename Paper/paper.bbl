@@ -116,6 +116,12 @@
   \mn@doi [\mnras] {10.1093/mnrasl/slu160}, \href
   {http://adsabs.harvard.edu/abs/2015MNRAS.446L..36F} {446, L36}
 
+\bibitem[\protect\citeauthoryear{{Foreman-Mackey}, {Hogg}, {Lang}  \&
+  {Goodman}}{{Foreman-Mackey} et~al.}{2013}]{2013PASP..125..306F}
+{Foreman-Mackey} D.,  {Hogg} D.~W.,  {Lang} D.,   {Goodman} J.,  2013, \mn@doi
+  [\pasp] {10.1086/670067}, \href
+  {http://adsabs.harvard.edu/abs/2013PASP..125..306F} {125, 306}
+
 \bibitem[\protect\citeauthoryear{{Gold}, {Paschalidis}, {Etienne}, {Shapiro}
   \& {Pfeiffer}}{{Gold} et~al.}{2014a}]{2014PhRvD..89f4060G}
 {Gold} R.,  {Paschalidis} V.,  {Etienne} Z.~B.,  {Shapiro} S.~L.,   {Pfeiffer}
@@ -306,10 +312,10 @@
   {http://adsabs.harvard.edu/abs/2011ApJ...743..136O} {743, 136}
 
 \bibitem[\protect\citeauthoryear{{Paragi} et~al.,}{{Paragi}
-  et~al.}{2014}]{2014arXiv1412.5971P}
-{Paragi} Z.,  et~al., 2014, preprint, \href
-  {http://adsabs.harvard.edu/abs/2014arXiv1412.5971P} {} (\mn@eprint {arXiv}
-  {1412.5971})
+  et~al.}{2015}]{2015aska.confE.143P}
+{Paragi} Z.,  et~al., 2015, Advancing Astrophysics with the Square Kilometre
+  Array (AASKA14), \href {http://adsabs.harvard.edu/abs/2015aska.confE.143P}
+  {p.~143}
 
 \bibitem[\protect\citeauthoryear{{Peters}}{{Peters}}{1964}]{1964PhRv..136.1224P}
 {Peters} P.~C.,  1964, \mn@doi [Physical Review] {10.1103/PhysRev.136.B1224},
